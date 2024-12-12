@@ -1,7 +1,11 @@
 @use "../abstracts/variables" as *;
 
 main {
+  outline: 2px solid purple;
   max-width: 1200px;
   background-color: $clr-rose-50;
   margin-inline: auto;
+  margin-block: 2rem;
+  display: grid;
+  grid-template-columns: 65% 35%;
 }

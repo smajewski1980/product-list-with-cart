@@ -1,1 +1,12 @@
-
+.product-grid {
+  h1 {
+    font-size: 2rem;
+  }
+  .cards-grid-wrapper {
+    > * {
+      outline: 2px solid lime;
+    }
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}

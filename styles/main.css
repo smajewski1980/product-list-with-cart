@@ -45,7 +45,22 @@ body {
 }
 
 main {
+  outline: 2px solid purple;
   max-width: 1200px;
   background-color: hsl(20, 50%, 98%);
   margin-inline: auto;
+  margin-block: 2rem;
+  display: grid;
+  grid-template-columns: 65% 35%;
+}
+
+.product-grid h1 {
+  font-size: 2rem;
+}
+.product-grid .cards-grid-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+.product-grid .cards-grid-wrapper > * {
+  outline: 2px solid lime;
 }/*# sourceMappingURL=main.css.map */
