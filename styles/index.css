@@ -1,30 +1,40 @@
-main {
-  outline: 2px solid purple;
+/*# sourceMappingURL=index.css.map */a(0, 0, 0, 0.2);
   max-width: 1200px;
   background-color: hsl(20, 50%, 98%);
   margin-inline: auto;
   margin-block: 2rem;
   display: grid;
   grid-template-columns: 65% 35%;
+  padding: 5rem;
+  gap: 1rem;
 }
 
-.product-grid h1 {
-  font-size: 2rem;
-}
 .product-grid .cards-grid-wrapper {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
 }
-.product-grid .cards-grid-wrapper > * {
-  outline: 2px solid lime;
-}/*# sourceMappingURL=index.css.map */tText-SemiBold.ttf);
-  font-weight: 600;
+.product-grid .cards-grid-wrapper img {
+  width: 200px;
 }
-@font-face {
-  font-family: "Red Hat Text";
-  src: url(../../assets/fonts/static/RedHatText-Bold.ttf);
-  font-weight: 700;
+
+.cart {
+  align-self: start;
+  background-color: white;
+  border-radius: 10px;
 }
-body {
-  font-family: "Red Hat Text";
-}/*# sourceMappingURL=index.css.map */
+.cart .cart-empty {
+  padding: 1.5rem 1.5rem 2.5rem;
+  display: grid;
+  gap: 1rem;
+}
+.cart .cart-empty img {
+  margin-inline: auto;
+}
+.cart .cart-empty p {
+  text-align: center;
+  font-size: 0.85rem;
+}
+.cart .cart-with-items {
+  display: none;
+}/*# sourceMappingURL=index.css.map */x.css.map */

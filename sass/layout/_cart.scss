@@ -1,1 +1,23 @@
+.cart {
+  align-self: start;
+  background-color: white;
+  border-radius: 10px;
 
+  .cart-empty {
+    padding: 1.5rem 1.5rem 2.5rem;
+    display: grid;
+    gap: 1rem;
+
+    img {
+      margin-inline: auto;
+    }
+    p {
+      text-align: center;
+      font-size: 0.85rem;
+    }
+  }
+
+  .cart-with-items {
+    display: none;
+  }
+}
