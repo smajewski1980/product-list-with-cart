@@ -42,4 +42,10 @@ button {
 }
 body {
   font-family: "Red Hat Text";
+}
+
+main {
+  max-width: 1200px;
+  background-color: hsl(20, 50%, 98%);
+  margin-inline: auto;
 }/*# sourceMappingURL=main.css.map */

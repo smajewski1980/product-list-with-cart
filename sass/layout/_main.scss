@@ -1,0 +1,7 @@
+@use "../abstracts/variables" as *;
+
+main {
+  max-width: 1200px;
+  background-color: $clr-rose-50;
+  margin-inline: auto;
+}

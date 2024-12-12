@@ -26,18 +26,68 @@
     </style>
   </head>
   <body>
-    Desserts Waffle with Berries Waffle 6.50 Add to Cart Vanilla Bean Crème
-    Brûlée Crème Brûlée 7.00 Add to Cart Macaron Mix of Five Macaron 8.00 Add to
-    Cart Classic Tiramisu Tiramisu 5.50 Add to Cart Pistachio Baklava Baklava
-    4.00 Add to Cart Lemon Meringue Pie Pie 5.00 Add to Cart Red Velvet Cake
-    Cake 4.50 Add to Cart Salted Caramel Brownie Brownie 4.50 Add to Cart
-    Vanilla Panna Cotta Panna Cotta 6.50 Add to Cart Your Cart (<!-- Quantity -->)
-    Your added items will appear here
+    <main>
+      <dialog>
+        <div class="order-conf">
+          <img src="/assets/images/icon-order-confirmed.svg" alt="" />
+          <p>Order Confirmed</p>
+          <p>We hope you enjoy your food!</p>
+          <div class="order-summary">
+            <div class="order-summary-item">item 1</div>
+            <div class="order-summary-item">item 2</div>
+            <div class="order-summary-item">item 3</div>
+          </div>
+          <div class="total-wrapper">
+            <p>Order Total</p>
+            <p>$XX.XX</p>
+          </div>
+          <button>Start New Order</button>
+        </div>
+      </dialog>
+      <section class="product-grid">
+        <h1>Desserts</h1>
+        <div class="cards-grid-wrapper">
+          <div class="card">card 1</div>
+          <div class="card">card 2</div>
+          <div class="card">card 3</div>
+          <div class="card">card 4</div>
+          <div class="card">card 5</div>
+          <div class="card">card 6</div>
+          <div class="card">card 7</div>
+          <div class="card">card 8</div>
+          <div class="card">card 9</div>
+        </div>
+      </section>
+      <section class="cart">
+        <div class="cart-empty">
+          <h2>Your Cart (0)</h2>
+          <img src="/assets/images/illustration-empty-cart.svg" alt="" />
+          <p>Your added items will appear here</p>
+        </div>
+        <div class="cart-with-items">
+          <h2>Your Cart (x)</h2>
+          <div class="cart-items">
+            <div class="cart-item">cart item 1</div>
+            <div class="cart-item">cart item 2</div>
+            <div class="cart-item">cart item 3</div>
+          </div>
+          <div class="total-wrapper">
+            <p>Order Total</p>
+            <p>$XX.XX</p>
+          </div>
+          <div class="disclaimer">
+            <img src="/assets/images/icon-carbon-neutral.svg" alt="" />
+            <p>This is a carbon neautral delivery</p>
+          </div>
+          <button>Confirm Order</button>
+        </div>
+      </section>
+    </main>
 
     <div class="attribution">
       Challenge by
       <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>.
-      Coded by <a href="#">Your Name Here</a>.
+      Coded by <a href="#">Steve Majewski</a>.
     </div>
   </body>
 </html>
