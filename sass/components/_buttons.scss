@@ -1,0 +1,7 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+button {
+  border-radius: 999px;
+  border: none;
+}

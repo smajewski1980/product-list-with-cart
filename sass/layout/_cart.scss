@@ -1,4 +1,5 @@
 @use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
 
 .cart {
   align-self: start;
@@ -23,7 +24,7 @@
 
   .cart-with-items {
     // display: none;
-    outline: 2px solid lime;
+    // outline: 2px solid lime;
     padding: 1.5rem;
 
     .cart-items-wrapper {
@@ -68,6 +69,44 @@
           border-radius: 50%;
         }
       }
+    }
+
+    .total-wrapper {
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
+      padding-block: 1rem;
+
+      p:first-child {
+        font-size: 0.85rem;
+      }
+      p:last-child {
+        font-weight: 700;
+        font-size: 1.25rem;
+      }
+    }
+
+    .disclaimer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-block: 1rem;
+      border-radius: 10px;
+      background-color: $clr-rose-50;
+      font-size: 0.85rem;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+
+      span {
+        font-weight: 600;
+      }
+    }
+
+    button {
+      cursor: pointer;
+      width: 100%;
+      padding-block: 0.75rem;
+      @include buttons($clr-red, $clr-rose-50);
     }
   }
 }
