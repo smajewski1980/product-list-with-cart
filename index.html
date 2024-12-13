@@ -121,27 +121,41 @@
           </div>
         </div>
       </section>
+
       <section class="cart">
         <div class="cart-empty">
           <h2>Your Cart (0)</h2>
           <img src="/assets/images/illustration-empty-cart.svg" alt="" />
           <p>Your added items will appear here</p>
         </div>
+
         <div class="cart-with-items">
           <h2>Your Cart (x)</h2>
-          <div class="cart-items">
-            <div class="cart-item">cart item 1</div>
-            <div class="cart-item">cart item 2</div>
-            <div class="cart-item">cart item 3</div>
+          <div class="cart-items-wrapper">
+            <div class="cart-item">
+              <div class="cart-item-content">
+                <p class="cart-item-name">Product Name</p>
+                <div class="cart-item-price-info">
+                  <p class="cart-item-qty">Xx</p>
+                  <p class="cart-item-price">@ $X.XX</p>
+                  <p class="cart-item-subtotal">$X.XX</p>
+                </div>
+              </div>
+              <div class="cart-item-close">
+                <img src="/assets/images/icon-remove-item.svg" alt="" />
+              </div>
+            </div>
           </div>
           <div class="total-wrapper">
             <p>Order Total</p>
             <p>$XX.XX</p>
           </div>
+
           <div class="disclaimer">
             <img src="/assets/images/icon-carbon-neutral.svg" alt="" />
-            <p>This is a carbon neautral delivery</p>
+            <p>This is a carbon neutral delivery</p>
           </div>
+
           <button>Confirm Order</button>
         </div>
       </section>

@@ -1,3 +1,5 @@
+@use "../abstracts/variables" as *;
+
 .cart {
   align-self: start;
   background-color: white;
@@ -7,6 +9,8 @@
     padding: 1.5rem 1.5rem 2.5rem;
     display: grid;
     gap: 1rem;
+
+    display: none;
 
     img {
       margin-inline: auto;
@@ -18,6 +22,52 @@
   }
 
   .cart-with-items {
-    display: none;
+    // display: none;
+    outline: 2px solid lime;
+    padding: 1.5rem;
+
+    .cart-items-wrapper {
+      // margin-top: 0.5rem;
+
+      .cart-item {
+        // outline: 2px solid blue;
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        padding-block: 0.5rem;
+        border-bottom: 1px solid rgba($clr-rose-400, 0.5);
+
+        .cart-item-content {
+          .cart-item-name {
+            font-weight: 600;
+          }
+
+          .cart-item-price-info {
+            display: flex;
+            gap: 0.5rem;
+
+            p {
+              color: $clr-rose-400;
+            }
+
+            p:first-child {
+              margin-right: 0.5rem;
+              color: $clr-red;
+              font-weight: 700;
+            }
+
+            p:last-child {
+              font-weight: 600;
+            }
+          }
+        }
+
+        .cart-item-close {
+          outline: 1px solid $clr-rose-400;
+          padding: 0.2rem;
+          border-radius: 50%;
+        }
+      }
+    }
   }
 }
