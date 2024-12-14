@@ -1,3 +1,3 @@
 const orderConfModal = document.querySelector("dialog");
 
-orderConfModal.showModal();
+// orderConfModal.showModal();
