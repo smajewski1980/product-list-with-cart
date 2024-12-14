@@ -24,6 +24,7 @@
         color: hsl(228, 45%, 44%);
       }
     </style>
+    <script src="/index.js" defer></script>
   </head>
   <body>
     <main>
@@ -32,18 +33,50 @@
           <img src="/assets/images/icon-order-confirmed.svg" alt="" />
           <p>Order Confirmed</p>
           <p>We hope you enjoy your food!</p>
+
           <div class="order-summary">
-            <div class="order-summary-item">item 1</div>
-            <div class="order-summary-item">item 2</div>
-            <div class="order-summary-item">item 3</div>
-          </div>
-          <div class="total-wrapper">
-            <p>Order Total</p>
-            <p>$XX.XX</p>
+            <div class="order-summary-item">
+              <img src="/assets/images/image-baklava-thumbnail.jpg" alt="" />
+              <div class="order-summary-content">
+                <p>Product Name</p>
+                <div class="order-summary-content-price-wrapper">
+                  <p class="order-summary-item-qty">1x</p>
+                  <p class="order-summary-item-price">@ $X.XX</p>
+                </div>
+              </div>
+              <p class="order-summary-item-subtotal">$X.XX</p>
+            </div>
+            <div class="order-summary-item">
+              <img src="/assets/images/image-baklava-thumbnail.jpg" alt="" />
+              <div class="order-summary-content">
+                <p>Product Name</p>
+                <div class="order-summary-content-price-wrapper">
+                  <p class="order-summary-item-qty">1x</p>
+                  <p class="order-summary-item-price">@ $X.XX</p>
+                </div>
+              </div>
+              <p class="order-summary-item-subtotal">$X.XX</p>
+            </div>
+            <div class="order-summary-item">
+              <img src="/assets/images/image-baklava-thumbnail.jpg" alt="" />
+              <div class="order-summary-content">
+                <p>Product Name</p>
+                <div class="order-summary-content-price-wrapper">
+                  <p class="order-summary-item-qty">1x</p>
+                  <p class="order-summary-item-price">@ $X.XX</p>
+                </div>
+              </div>
+              <p class="order-summary-item-subtotal">$X.XX</p>
+            </div>
+            <div class="total-wrapper">
+              <p>Order Total</p>
+              <p>$XX.XX</p>
+            </div>
           </div>
           <button>Start New Order</button>
         </div>
       </dialog>
+
       <section class="product-grid">
         <h1>Desserts</h1>
         <div class="cards-grid-wrapper">

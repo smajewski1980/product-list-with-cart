@@ -1,0 +1,100 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+dialog {
+  border-radius: 10px;
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  border: none;
+
+  &::backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  .order-conf {
+    min-width: 40vw;
+    padding: 1rem;
+
+    > p:nth-of-type(1) {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-top: 1rem;
+    }
+
+    > p:nth-of-type(2) {
+      color: $clr-rose-500;
+    }
+
+    .order-summary {
+      background-color: $clr-rose-50;
+      padding: 0.25rem 1.25rem 1.25rem;
+      margin-block: 2rem;
+
+      .order-summary-item {
+        align-items: center;
+        display: flex;
+        border-bottom: 1px solid rgba($clr-rose-400, 0.3);
+        padding-block: 1rem;
+
+        .order-summary-content {
+          display: grid;
+          gap: 0.75rem;
+          flex-grow: 1;
+          line-height: 1;
+
+          > p {
+            font-weight: 600;
+          }
+
+          .order-summary-content-price-wrapper {
+            display: flex;
+
+            > p:first-child {
+              font-weight: 600;
+              color: $clr-red;
+              margin-right: 1rem;
+            }
+
+            > p:last-child {
+              opacity: 0.5;
+            }
+          }
+        }
+
+        img {
+          width: 50px;
+          height: 50px;
+          margin-right: 1rem;
+        }
+
+        .order-summary-item-subtotal {
+          font-weight: 600;
+        }
+      }
+
+      .total-wrapper {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        margin-top: 1rem;
+
+        p:first-child {
+          color: $clr-rose-900;
+        }
+        p:last-child {
+          font-size: 1.25rem;
+          font-weight: 700;
+        }
+      }
+    }
+
+    button {
+      cursor: pointer;
+      font-size: 1rem;
+      width: 100%;
+      padding-block: 0.75rem;
+      @include buttons($clr-red, $clr-rose-50);
+    }
+  }
+}
