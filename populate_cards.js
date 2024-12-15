@@ -5,9 +5,9 @@ async function loadJSON(url) {
   return await res.json();
 }
 
-function generateCard({ image, category, name, price }) {
+function generateCard({ image, category, name, price, id }) {
   return `
-    <div class="card">
+    <div class="card" data-prod-id=${id}>
         <img src=${image.desktop} alt="" />
         <div class="card-content">
           <p class="card-category">${category}</p>
