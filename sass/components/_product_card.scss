@@ -1,6 +1,9 @@
 @use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
 
 .card {
+  position: relative;
+
   img {
     border-radius: 10px;
     margin-bottom: 2rem;
@@ -18,5 +21,59 @@
 
   .card-price {
     color: $clr-red;
+  }
+
+  button {
+    @include buttons(white, black);
+    font-weight: 600;
+    outline: 2px solid $clr-rose-400;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -35%);
+    top: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 2.5rem;
+    text-wrap: nowrap;
+    gap: 0.5rem;
+    cursor: pointer;
+
+    .cart-icon {
+      margin: 0;
+    }
+
+    .decrement-item,
+    .increment-item {
+      display: none;
+    }
+  }
+
+  .added-to-cart {
+    width: 176px;
+    background-color: $clr-red;
+    color: $clr-rose-50;
+
+    .cart-icon {
+      display: none;
+    }
+
+    .decrement-item,
+    .increment-item {
+      display: block;
+      position: absolute;
+      width: 1.5rem;
+      height: 1.5rem;
+      border-radius: 50%;
+      color: $clr-rose-50;
+      outline: 2px solid $clr-rose-50;
+      left: 1rem;
+      cursor: pointer;
+    }
+
+    .increment-item {
+      left: unset;
+      right: 1rem;
+    }
   }
 }
