@@ -5,14 +5,6 @@ async function loadJSON(url) {
   return await res.json();
 }
 
-loadJSON("/data.json").then((data) => {
-  let cardHtml = "";
-  for (item of data) {
-    cardHtml += generateCard(item);
-  }
-  prodCardsWrapper.innerHTML = cardHtml;
-});
-
 function generateCard({ image, category, name, price }) {
   return `
     <div class="card">
@@ -25,3 +17,11 @@ function generateCard({ image, category, name, price }) {
     </div>
   `;
 }
+
+loadJSON("/data.json").then((data) => {
+  let cardHtml = "";
+  for (item of data) {
+    cardHtml += generateCard(item);
+  }
+  prodCardsWrapper.innerHTML = cardHtml;
+});

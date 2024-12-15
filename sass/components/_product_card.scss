@@ -1,0 +1,22 @@
+@use "../abstracts/variables" as *;
+
+.card {
+  img {
+    border-radius: 10px;
+    margin-bottom: 2rem;
+  }
+
+  .card-category {
+    font-size: 0.85rem;
+    color: $clr-rose-400;
+  }
+
+  .card-name,
+  .card-price {
+    font-weight: 600;
+  }
+
+  .card-price {
+    color: $clr-red;
+  }
+}
