@@ -65,6 +65,7 @@ document.addEventListener("click", (e) => {
   if (e.target.matches(".decrement-item")) {
     const button = e.target;
     const id = e.target.parentElement.parentElement.dataset.prodId;
+
     cartObj.cartItems.forEach((item) => {
       if (item.itemID.toString() !== id) {
         return;
@@ -75,7 +76,9 @@ document.addEventListener("click", (e) => {
         <p class="decrement-item">-</p>
           ${item.qty}
         <p class="increment-item">+</p>`;
+          updateCartUI();
         }
+
         console.log(cartObj.cartItems);
       }
     });
@@ -98,6 +101,7 @@ document.addEventListener("click", (e) => {
         <p class="increment-item">+</p>`;
         updateCartUI();
       }
+
       console.log(cartObj.cartItems);
     });
   }
@@ -138,6 +142,8 @@ function updateCartItemTotal() {
   });
   cartItemQty.innerText = `Your Cart (${qtyTotal})`;
 }
+
+// need to update cart ui on qty decrement
 
 // need to make delete item button active
 
