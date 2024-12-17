@@ -1,4 +1,10 @@
 const orderConfModal = document.querySelector("dialog");
+const cartItemsInnerWrapper = document.querySelector(
+  ".cart-items-inner-wrapper"
+);
+const cartWithItems = document.querySelector(".cart-with-items");
+const cartEmpty = document.querySelector(".cart-empty");
+const cartItemQty = document.querySelector(".cart-with-items h2");
 
 // orderConfModal.showModal();
 
@@ -38,9 +44,18 @@ document.addEventListener("click", (e) => {
           1
         <p class="increment-item">+</p>`;
 
+    cartEmpty.style.display = "none";
+    cartWithItems.style.display = "block";
+
     loadJSON("/data.json").then((data) => {
       let newCartItem = new CartItem(data[button.parentElement.dataset.prodId]);
       cartObj.cartItems.push(newCartItem);
+      createCartItemHtml(newCartItem);
+      if (cartObj.cartItems.length === 0) {
+        cartItemQty.innerText = "Your Cart (1)";
+      } else {
+        updateCartItemTotal();
+      }
     });
     console.log(cartObj.cartItems);
   }
@@ -81,8 +96,51 @@ document.addEventListener("click", (e) => {
         <p class="decrement-item">-</p>
           ${item.qty}
         <p class="increment-item">+</p>`;
+        updateCartUI();
       }
       console.log(cartObj.cartItems);
     });
   }
 });
+
+function createCartItemHtml(item) {
+  cartItemsInnerWrapper.innerHTML += `
+    <div class="cart-item cart-prod-id-${item.itemID}">
+      <div class="cart-item-content">
+        <p class="cart-item-name">${item.name}</p>
+        <div class="cart-item-price-info">
+          <p class="cart-item-qty">${item.qty}</p>
+          <p class="cart-item-price">@ $${item.price}</p>
+          <p class="cart-item-subtotal">$${item
+            .calculateSubtotal()
+            .toFixed(2)}</p>
+        </div>
+      </div>
+      <div class="cart-item-close">
+        <img src="/assets/images/icon-remove-item.svg" alt="remove item" />
+      </div>
+    </div>
+  `;
+}
+
+function updateCartUI() {
+  cartItemsInnerWrapper.innerHTML = "";
+  cartObj.cartItems.forEach((item) => {
+    createCartItemHtml(item);
+    updateCartItemTotal();
+  });
+}
+
+function updateCartItemTotal() {
+  let qtysArray = cartObj.cartItems.map((item) => item.qty);
+  let qtyTotal = qtysArray.reduce((acc, curr) => {
+    return acc + curr;
+  });
+  cartItemQty.innerText = `Your Cart (${qtyTotal})`;
+}
+
+// need to make delete item button active
+
+// need to make confirm order button update and show modal
+
+// need to make modal button clear cart

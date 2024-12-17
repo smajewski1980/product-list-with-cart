@@ -153,7 +153,7 @@ main {
   padding: 1.5rem 1.5rem 2.5rem;
   display: grid;
   gap: 1rem;
-  display: none;
+  display: block;
 }
 .cart .cart-empty img {
   margin-inline: auto;
@@ -164,6 +164,7 @@ main {
 }
 .cart .cart-with-items {
   padding: 1.5rem;
+  display: none;
 }
 .cart .cart-with-items .cart-items-wrapper .cart-item {
   align-items: center;

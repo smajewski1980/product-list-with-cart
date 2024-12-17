@@ -11,7 +11,7 @@
     display: grid;
     gap: 1rem;
 
-    display: none;
+    display: block;
 
     img {
       margin-inline: auto;
@@ -26,6 +26,7 @@
     // display: none;
     // outline: 2px solid lime;
     padding: 1.5rem;
+    display: none;
 
     .cart-items-wrapper {
       // margin-top: 0.5rem;
