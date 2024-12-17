@@ -5,6 +5,7 @@ const cartItemsInnerWrapper = document.querySelector(
 const cartWithItems = document.querySelector(".cart-with-items");
 const cartEmpty = document.querySelector(".cart-empty");
 const cartItemQty = document.querySelector(".cart-with-items h2");
+const cartTotalElem = document.querySelector(".cart-total");
 
 // orderConfModal.showModal();
 
@@ -55,6 +56,7 @@ document.addEventListener("click", (e) => {
         cartItemQty.innerText = "Your Cart (1)";
       } else {
         updateCartItemTotal();
+        updateCartTotal();
       }
     });
     console.log(cartObj.cartItems);
@@ -132,6 +134,7 @@ function updateCartUI() {
   cartObj.cartItems.forEach((item) => {
     createCartItemHtml(item);
     updateCartItemTotal();
+    updateCartTotal();
   });
 }
 
@@ -143,10 +146,18 @@ function updateCartItemTotal() {
   cartItemQty.innerText = `Your Cart (${qtyTotal})`;
 }
 
-// need to update cart ui on qty decrement
+function updateCartTotal() {
+  const subtotalsArray = cartObj.cartItems.map((item) =>
+    item.calculateSubtotal()
+  );
+  const cartTotal = subtotalsArray.reduce((acc, curr) => {
+    return acc + curr;
+  });
+  cartTotalElem.innerText = `$${cartTotal.toFixed(2)}`;
+}
 
 // need to make delete item button active
 
-// need to make confirm order button update and show modal
+// need to make confirm order button update modal and show modal
 
 // need to make modal button clear cart
