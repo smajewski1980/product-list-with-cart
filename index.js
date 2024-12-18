@@ -7,13 +7,26 @@ const cartEmpty = document.querySelector(".cart-empty");
 const cartItemQty = document.querySelector(".cart-with-items h2");
 const cartTotalElem = document.querySelector(".cart-total");
 const removeCartItemBtn = document.querySelector(".cart-item-remove");
-// orderConfModal.showModal();
-
 const cartObj = {
   isEmpty: true,
   cartItems: [],
   cartTotal: 0,
-  calculateTotal: () => {},
+
+  calculateTotal: () => {
+    const subtotalsArray = cartObj.cartItems.map((item) =>
+      item.calculateSubtotal()
+    );
+    if (subtotalsArray.length) {
+      const cartTotal = subtotalsArray.reduce((acc, curr) => {
+        return acc + curr;
+      });
+      cartTotalElem.innerText = `$${cartTotal.toFixed(2)}`;
+    } else {
+      cartWithItems.style.display = "none";
+      cartEmpty.style.display = "block";
+    }
+  },
+
   confirmOrder: () => {},
   addItem: (item) => {
     this.cartItems.push(item);
@@ -32,88 +45,6 @@ class CartItem {
   }
   removeItem() {}
 }
-
-document.addEventListener("click", (e) => {
-  if (e.target.matches(".add-to-cart-btn")) {
-    e.preventDefault();
-    let button = e.target;
-    cartObj.isEmpty = false;
-    button.classList.add("added-to-cart");
-    button.classList.remove("add-to-cart-btn");
-    button.innerHTML = updateProdCardBtns(item, 1);
-    cartEmpty.style.display = "none";
-    cartWithItems.style.display = "block";
-
-    loadJSON("/data.json").then((data) => {
-      let newCartItem = new CartItem(data[button.parentElement.dataset.prodId]);
-      cartObj.cartItems.push(newCartItem);
-      createCartItemHtml(newCartItem);
-      if (cartObj.cartItems.length === 0) {
-        cartItemQty.innerText = "Your Cart (1)";
-      } else {
-        updateCartItemTotal();
-        updateCartTotal();
-      }
-    });
-    console.log(cartObj.cartItems);
-  }
-});
-
-document.addEventListener("click", (e) => {
-  if (e.target.matches(".decrement-item")) {
-    const button = e.target;
-    const id = e.target.parentElement.parentElement.dataset.prodId;
-
-    cartObj.cartItems.forEach((item) => {
-      if (item.itemID.toString() !== id) {
-        return;
-      } else {
-        if (item.qty !== 1) {
-          item.qty--;
-          button.parentElement.innerHTML = updateProdCardBtns(item);
-          updateCartUI();
-        } else {
-          resetProdCardBtn(id);
-          cartObj.cartItems.forEach((item, idx) => {
-            if (item.itemID.toString() === id) {
-              cartObj.cartItems.splice(idx, 1);
-              updateCartUI();
-              updateCartTotal();
-            }
-          });
-        }
-
-        // console.log(cartObj.cartItems);
-      }
-    });
-  }
-});
-
-document.addEventListener("click", (e) => {
-  if (e.target.matches(".increment-item")) {
-    const button = e.target.parentElement;
-    const id = e.target.parentElement.parentElement.dataset.prodId;
-
-    cartObj.cartItems.forEach((item) => {
-      if (item.itemID.toString() !== id) {
-        return;
-      } else {
-        item.qty++;
-
-        button.innerHTML = updateProdCardBtns(item);
-
-        // button.innerHTML = `
-        // <p class="decrement-item">-</p>
-        //   ${item.qty}
-        // <p class="increment-item">+</p>`;
-
-        updateCartUI();
-      }
-
-      console.log(cartObj.cartItems);
-    });
-  }
-});
 
 function createCartItemHtml(item) {
   cartItemsInnerWrapper.innerHTML += `
@@ -142,7 +73,8 @@ function updateCartUI() {
   cartObj.cartItems.forEach((item) => {
     createCartItemHtml(item);
     updateCartItemTotal();
-    updateCartTotal();
+    // updateCartTotal();
+    cartObj.calculateTotal();
   });
 }
 
@@ -154,35 +86,35 @@ function updateCartItemTotal() {
   cartItemQty.innerText = `Your Cart (${qtyTotal})`;
 }
 
-function updateCartTotal() {
-  const subtotalsArray = cartObj.cartItems.map((item) =>
-    item.calculateSubtotal()
-  );
+// function updateCartTotal() {
+//   const subtotalsArray = cartObj.cartItems.map((item) =>
+//     item.calculateSubtotal()
+//   );
 
-  if (subtotalsArray.length) {
-    const cartTotal = subtotalsArray.reduce((acc, curr) => {
-      return acc + curr;
-    });
-    cartTotalElem.innerText = `$${cartTotal.toFixed(2)}`;
-  } else {
-    cartWithItems.style.display = "none";
-    cartEmpty.style.display = "block";
-  }
-}
+//   if (subtotalsArray.length) {
+//     const cartTotal = subtotalsArray.reduce((acc, curr) => {
+//       return acc + curr;
+//     });
+//     cartTotalElem.innerText = `$${cartTotal.toFixed(2)}`;
+//   } else {
+//     cartWithItems.style.display = "none";
+//     cartEmpty.style.display = "block";
+//   }
+// }
 
-function removeCartItem(item) {
+function removeCartItem(item, prodId) {
   item.parentElement.parentElement.remove();
-  cartObj.cartItems.splice(item.itemID, 1);
-  updateCartTotal();
+  cartObj.cartItems.forEach((item, idx) => {
+    if (item.itemID.toString() === prodId) {
+      cartObj.cartItems.splice(idx, 1);
+      console.log(item.itemID);
+      console.log(prodId.Id);
+    }
+  });
+  cartObj.calculateTotal();
+  // updateCartUI();
+  // updateCartTotal();
 }
-
-document.addEventListener("click", (e) => {
-  if (e.target.matches(".cart-item-remove img")) {
-    removeCartItem(e.target);
-    const prodId = e.target.closest(".cart-item").dataset.prodId;
-    resetProdCardBtn(prodId);
-  }
-});
 
 function updateProdCardBtns(item, num) {
   return `
@@ -204,6 +136,7 @@ function resetProdCardBtn(prodId) {
 }
 
 // still have bug with order total when removing cart items other than the first
+// (but updates fine when called from decrement item)
 // had wanted to try to put update total as method on cartObj anyway, maybe that will help
 
 // need to make delete item button active
@@ -211,3 +144,88 @@ function resetProdCardBtn(prodId) {
 // need to make confirm order button update modal and show modal
 
 // need to make modal button clear cart
+
+document.addEventListener("click", (e) => {
+  if (e.target.matches(".decrement-item")) {
+    const button = e.target;
+    const id = e.target.parentElement.parentElement.dataset.prodId;
+
+    cartObj.cartItems.forEach((item) => {
+      if (item.itemID.toString() !== id) {
+        return;
+      } else {
+        if (item.qty !== 1) {
+          item.qty--;
+          button.parentElement.innerHTML = updateProdCardBtns(item);
+          updateCartUI();
+        } else {
+          resetProdCardBtn(id);
+          cartObj.cartItems.forEach((item, idx) => {
+            if (item.itemID.toString() === id) {
+              cartObj.cartItems.splice(idx, 1);
+              updateCartUI();
+              // updateCartTotal();
+              cartObj.calculateTotal();
+            }
+          });
+        }
+      }
+    });
+  }
+});
+
+document.addEventListener("click", (e) => {
+  if (e.target.matches(".increment-item")) {
+    const button = e.target.parentElement;
+    const id = e.target.parentElement.parentElement.dataset.prodId;
+
+    cartObj.cartItems.forEach((item) => {
+      if (item.itemID.toString() !== id) {
+        return;
+      } else {
+        item.qty++;
+        button.innerHTML = updateProdCardBtns(item);
+        updateCartUI();
+      }
+
+      console.log(cartObj.cartItems);
+    });
+  }
+});
+
+document.addEventListener("click", (e) => {
+  if (e.target.matches(".cart-item-remove img")) {
+    const prodId = e.target.closest(".cart-item").dataset.prodId;
+    removeCartItem(e.target, prodId);
+    resetProdCardBtn(prodId);
+  }
+});
+
+document.addEventListener("click", (e) => {
+  if (e.target.matches(".add-to-cart-btn")) {
+    e.preventDefault();
+    let button = e.target;
+    cartObj.isEmpty = false;
+    button.classList.add("added-to-cart");
+    button.classList.remove("add-to-cart-btn");
+    button.innerHTML = updateProdCardBtns(item, 1);
+    cartEmpty.style.display = "none";
+    cartWithItems.style.display = "block";
+
+    loadJSON("/data.json").then((data) => {
+      let newCartItem = new CartItem(data[button.parentElement.dataset.prodId]);
+      cartObj.cartItems.push(newCartItem);
+      createCartItemHtml(newCartItem);
+      if (cartObj.cartItems.length === 0) {
+        cartItemQty.innerText = "Your Cart (1)";
+      } else {
+        updateCartItemTotal();
+        // updateCartTotal();
+        cartObj.calculateTotal();
+      }
+    });
+    console.log(cartObj.cartItems);
+  }
+});
+
+// orderConfModal.showModal();
