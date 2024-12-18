@@ -191,10 +191,11 @@ main {
 .cart .cart-with-items .cart-items-wrapper .cart-item .cart-item-content .cart-item-price-info p:last-child {
   font-weight: 600;
 }
-.cart .cart-with-items .cart-items-wrapper .cart-item .cart-item-close {
+.cart .cart-with-items .cart-items-wrapper .cart-item .cart-item-remove {
   outline: 1px solid hsl(7, 20%, 60%);
   padding: 0.2rem;
   border-radius: 50%;
+  cursor: pointer;
 }
 .cart .cart-with-items .total-wrapper {
   align-items: center;

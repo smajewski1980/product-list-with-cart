@@ -64,10 +64,11 @@
           }
         }
 
-        .cart-item-close {
+        .cart-item-remove {
           outline: 1px solid $clr-rose-400;
           padding: 0.2rem;
           border-radius: 50%;
+          cursor: pointer;
         }
       }
     }

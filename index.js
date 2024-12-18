@@ -6,7 +6,7 @@ const cartWithItems = document.querySelector(".cart-with-items");
 const cartEmpty = document.querySelector(".cart-empty");
 const cartItemQty = document.querySelector(".cart-with-items h2");
 const cartTotalElem = document.querySelector(".cart-total");
-
+const removeCartItemBtn = document.querySelector(".cart-item-remove");
 // orderConfModal.showModal();
 
 const cartObj = {
@@ -40,11 +40,7 @@ document.addEventListener("click", (e) => {
     cartObj.isEmpty = false;
     button.classList.add("added-to-cart");
     button.classList.remove("add-to-cart-btn");
-    button.innerHTML = `  
-        <p class="decrement-item">-</p>
-          1
-        <p class="increment-item">+</p>`;
-
+    button.innerHTML = updateProdCardBtns(item, 1);
     cartEmpty.style.display = "none";
     cartWithItems.style.display = "block";
 
@@ -74,14 +70,20 @@ document.addEventListener("click", (e) => {
       } else {
         if (item.qty !== 1) {
           item.qty--;
-          button.parentElement.innerHTML = `
-        <p class="decrement-item">-</p>
-          ${item.qty}
-        <p class="increment-item">+</p>`;
+          button.parentElement.innerHTML = updateProdCardBtns(item);
           updateCartUI();
+        } else {
+          resetProdCardBtn(id);
+          cartObj.cartItems.forEach((item, idx) => {
+            if (item.itemID.toString() === id) {
+              cartObj.cartItems.splice(idx, 1);
+              updateCartUI();
+              updateCartTotal();
+            }
+          });
         }
 
-        console.log(cartObj.cartItems);
+        // console.log(cartObj.cartItems);
       }
     });
   }
@@ -97,10 +99,14 @@ document.addEventListener("click", (e) => {
         return;
       } else {
         item.qty++;
-        button.innerHTML = `
-        <p class="decrement-item">-</p>
-          ${item.qty}
-        <p class="increment-item">+</p>`;
+
+        button.innerHTML = updateProdCardBtns(item);
+
+        // button.innerHTML = `
+        // <p class="decrement-item">-</p>
+        //   ${item.qty}
+        // <p class="increment-item">+</p>`;
+
         updateCartUI();
       }
 
@@ -111,7 +117,9 @@ document.addEventListener("click", (e) => {
 
 function createCartItemHtml(item) {
   cartItemsInnerWrapper.innerHTML += `
-    <div class="cart-item cart-prod-id-${item.itemID}">
+    <div class="cart-item cart-prod-id-${item.itemID}" data-prod-id=${
+    item.itemID
+  }>
       <div class="cart-item-content">
         <p class="cart-item-name">${item.name}</p>
         <div class="cart-item-price-info">
@@ -122,7 +130,7 @@ function createCartItemHtml(item) {
             .toFixed(2)}</p>
         </div>
       </div>
-      <div class="cart-item-close">
+      <div class="cart-item-remove">
         <img src="/assets/images/icon-remove-item.svg" alt="remove item" />
       </div>
     </div>
@@ -150,11 +158,53 @@ function updateCartTotal() {
   const subtotalsArray = cartObj.cartItems.map((item) =>
     item.calculateSubtotal()
   );
-  const cartTotal = subtotalsArray.reduce((acc, curr) => {
-    return acc + curr;
-  });
-  cartTotalElem.innerText = `$${cartTotal.toFixed(2)}`;
+
+  if (subtotalsArray.length) {
+    const cartTotal = subtotalsArray.reduce((acc, curr) => {
+      return acc + curr;
+    });
+    cartTotalElem.innerText = `$${cartTotal.toFixed(2)}`;
+  } else {
+    cartWithItems.style.display = "none";
+    cartEmpty.style.display = "block";
+  }
 }
+
+function removeCartItem(item) {
+  item.parentElement.parentElement.remove();
+  cartObj.cartItems.splice(item.itemID, 1);
+  updateCartTotal();
+}
+
+document.addEventListener("click", (e) => {
+  if (e.target.matches(".cart-item-remove img")) {
+    removeCartItem(e.target);
+    const prodId = e.target.closest(".cart-item").dataset.prodId;
+    resetProdCardBtn(prodId);
+  }
+});
+
+function updateProdCardBtns(item, num) {
+  return `
+        <p class="decrement-item">-</p>
+          ${!num ? item.qty : 1}
+        <p class="increment-item">+</p>`;
+}
+
+function resetProdCardBtn(prodId) {
+  const prodCards = document.querySelectorAll(".card");
+  const btn = prodCards[prodId].children[2];
+  btn.classList.add("add-to-cart-btn");
+  btn.classList.remove("added-to-cart");
+  btn.innerHTML = `        
+        <img class="cart-icon" src="/assets/images/icon-add-to-cart.svg" alt=""/>
+          <p class="decrement-item">-</p>
+            Add To Cart
+          <p class="increment-item">+</p>`;
+}
+
+// still have bug with order total when removing cart items other than the first
+// had wanted to try to put update total as method on cartObj anyway, maybe that will help
 
 // need to make delete item button active
 
