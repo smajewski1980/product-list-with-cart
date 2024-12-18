@@ -73,7 +73,6 @@ function updateCartUI() {
   cartObj.cartItems.forEach((item) => {
     createCartItemHtml(item);
     updateCartItemTotal();
-    // updateCartTotal();
     cartObj.calculateTotal();
   });
 }
@@ -86,34 +85,14 @@ function updateCartItemTotal() {
   cartItemQty.innerText = `Your Cart (${qtyTotal})`;
 }
 
-// function updateCartTotal() {
-//   const subtotalsArray = cartObj.cartItems.map((item) =>
-//     item.calculateSubtotal()
-//   );
-
-//   if (subtotalsArray.length) {
-//     const cartTotal = subtotalsArray.reduce((acc, curr) => {
-//       return acc + curr;
-//     });
-//     cartTotalElem.innerText = `$${cartTotal.toFixed(2)}`;
-//   } else {
-//     cartWithItems.style.display = "none";
-//     cartEmpty.style.display = "block";
-//   }
-// }
-
 function removeCartItem(item, prodId) {
   item.parentElement.parentElement.remove();
   cartObj.cartItems.forEach((item, idx) => {
     if (item.itemID.toString() === prodId) {
       cartObj.cartItems.splice(idx, 1);
-      console.log(item.itemID);
-      console.log(prodId.Id);
     }
   });
   cartObj.calculateTotal();
-  // updateCartUI();
-  // updateCartTotal();
 }
 
 function updateProdCardBtns(item, num) {
@@ -134,12 +113,6 @@ function resetProdCardBtn(prodId) {
             Add To Cart
           <p class="increment-item">+</p>`;
 }
-
-// still have bug with order total when removing cart items other than the first
-// (but updates fine when called from decrement item)
-// had wanted to try to put update total as method on cartObj anyway, maybe that will help
-
-// need to make delete item button active
 
 // need to make confirm order button update modal and show modal
 

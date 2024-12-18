@@ -69,6 +69,9 @@ main {
   border-radius: 50%;
   cursor: pointer;
 }
+.cart .cart-with-items .cart-items-wrapper .cart-item .cart-item-remove:hover, .cart .cart-with-items .cart-items-wrapper .cart-item .cart-item-remove:focus-visible {
+  filter: brightness(0);
+}
 .cart .cart-with-items .total-wrapper {
   align-items: center;
   display: flex;
@@ -102,6 +105,9 @@ main {
   padding-block: 0.75rem;
   background-color: hsl(14, 86%, 42%);
   color: hsl(20, 50%, 98%);
+}
+.cart .cart-with-items button:hover, .cart .cart-with-items button:focus-visible {
+  filter: brightness(0.9);
 }
 
 dialog {

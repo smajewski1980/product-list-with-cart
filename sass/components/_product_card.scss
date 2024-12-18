@@ -26,7 +26,6 @@
   button {
     @include buttons(white, black);
     font-weight: 600;
-    outline: 2px solid $clr-rose-400;
     position: absolute;
     left: 50%;
     transform: translate(-50%, -35%);
@@ -38,6 +37,16 @@
     text-wrap: nowrap;
     gap: 0.5rem;
     cursor: pointer;
+
+    &:not(.added-to-cart) {
+      outline: 2px solid $clr-rose-400;
+
+      &:hover,
+      &:focus-visible {
+        color: $clr-red;
+        outline: 2px solid $clr-red;
+      }
+    }
 
     .cart-icon {
       margin: 0;
@@ -69,6 +78,13 @@
       outline: 2px solid $clr-rose-50;
       left: 1rem;
       cursor: pointer;
+
+      &:hover,
+      &:focus-visible {
+        color: $clr-red;
+        background-color: $clr-rose-50;
+        outline: 2px solid $clr-red;
+      }
     }
 
     .increment-item {

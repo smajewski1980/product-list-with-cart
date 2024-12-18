@@ -69,6 +69,11 @@
           padding: 0.2rem;
           border-radius: 50%;
           cursor: pointer;
+
+          &:hover,
+          &:focus-visible {
+            filter: brightness(0);
+          }
         }
       }
     }
@@ -109,6 +114,11 @@
       width: 100%;
       padding-block: 0.75rem;
       @include buttons($clr-red, $clr-rose-50);
+
+      &:hover,
+      &:focus-visible {
+        filter: brightness(0.9);
+      }
     }
   }
 }
