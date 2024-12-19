@@ -13,4 +13,8 @@ main {
   grid-template-columns: 70% 30%;
   padding: 5rem;
   gap: 2rem;
+
+  @media screen and (width < 1200px) {
+    grid-template-columns: 1fr;
+  }
 }

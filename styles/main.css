@@ -150,6 +150,11 @@ main {
   padding: 5rem;
   gap: 2rem;
 }
+@media screen and (width < 1200px) {
+  main {
+    grid-template-columns: 1fr;
+  }
+}
 
 .product-grid .cards-grid-wrapper {
   display: grid;
