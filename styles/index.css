@@ -126,7 +126,7 @@ dialog::backdrop {
   background-color: rgba(0, 0, 0, 0.5);
 }
 dialog .order-conf {
-  min-width: 40vw;
+  min-width: 600px;
   padding: 1rem;
 }
 dialog .order-conf > p:nth-of-type(1) {

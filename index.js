@@ -7,6 +7,10 @@ const cartEmpty = document.querySelector(".cart-empty");
 const cartItemQty = document.querySelector(".cart-with-items h2");
 const cartTotalElem = document.querySelector(".cart-total");
 const removeCartItemBtn = document.querySelector(".cart-item-remove");
+const confOrdBtn = document.querySelector(".btn-conf-ord");
+const newOrdBtn = document.querySelector(".btn-new-ord");
+const prodCards = document.querySelectorAll(".card");
+
 const cartObj = {
   isEmpty: true,
   cartItems: [],
@@ -25,6 +29,12 @@ const cartObj = {
       cartWithItems.style.display = "none";
       cartEmpty.style.display = "block";
     }
+  },
+
+  resetCart() {
+    this.cartItems = [];
+    cartWithItems.style.display = "none";
+    cartEmpty.style.display = "block";
   },
 
   confirmOrder: () => {},
@@ -103,7 +113,6 @@ function updateProdCardBtns(item, num) {
 }
 
 function resetProdCardBtn(prodId) {
-  const prodCards = document.querySelectorAll(".card");
   const btn = prodCards[prodId].children[2];
   btn.classList.add("add-to-cart-btn");
   btn.classList.remove("added-to-cart");
@@ -201,4 +210,17 @@ document.addEventListener("click", (e) => {
   }
 });
 
-// orderConfModal.showModal();
+confOrdBtn.addEventListener("click", () => {
+  orderConfModal.showModal();
+});
+
+newOrdBtn.addEventListener("click", startNewOrder);
+
+function startNewOrder() {
+  cartObj.resetCart(cartObj);
+  orderConfModal.close();
+  prodCards.forEach((card, idx) => {
+    resetProdCardBtn(idx);
+  });
+  console.log("modal should be closed" + cartObj.cartItems.length);
+}
