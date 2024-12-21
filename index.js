@@ -31,9 +31,8 @@ const cartObj = {
   },
 
   resetCart() {
-    this.cartItems = [];
-    cartWithItems.style.display = "none";
-    cartEmpty.style.display = "block";
+    // submit data func would go here...
+    location.reload();
   },
 
   updateCartItemTotal() {
@@ -94,14 +93,6 @@ function updateCartUI() {
   });
 }
 
-// function updateCartItemTotal() {
-//   let qtysArray = cartObj.cartItems.map((item) => item.qty);
-//   let qtyTotal = qtysArray.reduce((acc, curr) => {
-//     return acc + curr;
-//   });
-//   cartItemQty.innerText = `Your Cart (${qtyTotal})`;
-// }
-
 function removeCartItem(item, prodId) {
   item.parentElement.parentElement.remove();
   cartObj.cartItems.forEach((item, idx) => {
@@ -120,7 +111,7 @@ function updateProdCardBtns(item, num) {
 }
 
 function resetProdCardBtn(prodId) {
-  var prodCards = document.querySelectorAll(".card");
+  const prodCards = document.querySelectorAll(".card");
   const btn = prodCards[prodId].children[2];
   btn.classList.add("add-to-cart-btn");
   btn.classList.remove("added-to-cart");
@@ -131,9 +122,9 @@ function resetProdCardBtn(prodId) {
           <p class="increment-item">+</p>`;
 }
 
-// need to make confirm order button update modal and show modal
+// need to make confirm order button update modal
 
-// need to make modal button clear cart
+// found bug, when confiriming order, probs with card btns resetting then problems after reset add one item, other item still in cart
 
 document.addEventListener("click", (e) => {
   if (e.target.matches(".decrement-item")) {
@@ -154,7 +145,6 @@ document.addEventListener("click", (e) => {
             if (item.itemID.toString() === id) {
               cartObj.cartItems.splice(idx, 1);
               updateCartUI();
-              // updateCartTotal();
               cartObj.calculateTotal();
             }
           });
@@ -212,7 +202,6 @@ document.addEventListener("click", (e) => {
         cartItemQty.innerText = "Your Cart (1)";
       } else {
         cartObj.updateCartItemTotal();
-        // updateCartTotal();
         cartObj.calculateTotal();
       }
     });
@@ -224,12 +213,4 @@ confOrdBtn.addEventListener("click", () => {
   orderConfModal.showModal();
 });
 
-newOrdBtn.addEventListener("click", startNewOrder);
-
-function startNewOrder() {
-  cartObj.resetCart(cartObj);
-  orderConfModal.close();
-  prodCards.forEach((card, idx) => {
-    resetProdCardBtn(idx);
-  });
-}
+newOrdBtn.addEventListener("click", cartObj.resetCart);
