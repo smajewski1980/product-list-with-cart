@@ -30,8 +30,8 @@ const cartObj = {
     }
   },
 
-  resetCart() {
-    // submit data func would go here...
+  startNewOrder() {
+    // submit order func would go here...
     location.reload();
   },
 
@@ -43,9 +43,54 @@ const cartObj = {
     cartItemQty.innerText = `Your Cart (${qtyTotal})`;
   },
 
-  confirmOrder: () => {},
+  confirmOrder() {
+    updateConfModal();
+    orderConfModal.showModal();
+  },
+
   addItem: (item) => {
     this.cartItems.push(item);
+  },
+
+  updateCartUI() {
+    cartItemsInnerWrapper.innerHTML = "";
+    cartObj.cartItems.forEach((item) => {
+      cartObj.createCartItemHtml(item);
+      cartObj.updateCartItemTotal();
+      cartObj.calculateTotal();
+    });
+  },
+
+  removeCartItem(item, prodId) {
+    item.parentElement.parentElement.remove();
+    this.cartItems.forEach((item, idx) => {
+      if (item.itemID.toString() === prodId) {
+        this.cartItems.splice(idx, 1);
+      }
+    });
+    this.calculateTotal();
+  },
+
+  createCartItemHtml(item) {
+    cartItemsInnerWrapper.innerHTML += `
+      <div class="cart-item cart-prod-id-${item.itemID}" data-prod-id=${
+      item.itemID
+    }>
+        <div class="cart-item-content">
+          <p class="cart-item-name">${item.name}</p>
+          <div class="cart-item-price-info">
+            <p class="cart-item-qty">${item.qty}</p>
+            <p class="cart-item-price">@ $${item.price}</p>
+            <p class="cart-item-subtotal">$${item
+              .calculateSubtotal()
+              .toFixed(2)}</p>
+          </div>
+        </div>
+        <div class="cart-item-remove">
+          <img src="/assets/images/icon-remove-item.svg" alt="remove item" />
+        </div>
+      </div>
+    `;
   },
 };
 
@@ -62,46 +107,7 @@ class CartItem {
   removeItem() {}
 }
 
-function createCartItemHtml(item) {
-  cartItemsInnerWrapper.innerHTML += `
-    <div class="cart-item cart-prod-id-${item.itemID}" data-prod-id=${
-    item.itemID
-  }>
-      <div class="cart-item-content">
-        <p class="cart-item-name">${item.name}</p>
-        <div class="cart-item-price-info">
-          <p class="cart-item-qty">${item.qty}</p>
-          <p class="cart-item-price">@ $${item.price}</p>
-          <p class="cart-item-subtotal">$${item
-            .calculateSubtotal()
-            .toFixed(2)}</p>
-        </div>
-      </div>
-      <div class="cart-item-remove">
-        <img src="/assets/images/icon-remove-item.svg" alt="remove item" />
-      </div>
-    </div>
-  `;
-}
-
-function updateCartUI() {
-  cartItemsInnerWrapper.innerHTML = "";
-  cartObj.cartItems.forEach((item) => {
-    createCartItemHtml(item);
-    cartObj.updateCartItemTotal();
-    cartObj.calculateTotal();
-  });
-}
-
-function removeCartItem(item, prodId) {
-  item.parentElement.parentElement.remove();
-  cartObj.cartItems.forEach((item, idx) => {
-    if (item.itemID.toString() === prodId) {
-      cartObj.cartItems.splice(idx, 1);
-    }
-  });
-  cartObj.calculateTotal();
-}
+function updateConfModal() {}
 
 function updateProdCardBtns(item, num) {
   return `
@@ -124,8 +130,6 @@ function resetProdCardBtn(prodId) {
 
 // need to make confirm order button update modal
 
-// found bug, when confiriming order, probs with card btns resetting then problems after reset add one item, other item still in cart
-
 document.addEventListener("click", (e) => {
   if (e.target.matches(".decrement-item")) {
     const button = e.target;
@@ -138,20 +142,20 @@ document.addEventListener("click", (e) => {
         if (item.qty !== 1) {
           item.qty--;
           button.parentElement.innerHTML = updateProdCardBtns(item);
-          updateCartUI();
+          cartObj.updateCartUI();
         } else {
           resetProdCardBtn(id);
           cartObj.cartItems.forEach((item, idx) => {
             if (item.itemID.toString() === id) {
               cartObj.cartItems.splice(idx, 1);
-              updateCartUI();
+              cartObj.updateCartUI();
               cartObj.calculateTotal();
             }
           });
         }
       }
     });
-    cartObj.updateCartItemTotal();
+    if (cartObj.cartItems.length) cartObj.updateCartItemTotal();
   }
 });
 
@@ -166,7 +170,7 @@ document.addEventListener("click", (e) => {
       } else {
         item.qty++;
         button.innerHTML = updateProdCardBtns(item);
-        updateCartUI();
+        cartObj.updateCartUI();
       }
 
       console.log(cartObj.cartItems);
@@ -177,9 +181,9 @@ document.addEventListener("click", (e) => {
 document.addEventListener("click", (e) => {
   if (e.target.matches(".cart-item-remove img")) {
     const prodId = e.target.closest(".cart-item").dataset.prodId;
-    removeCartItem(e.target, prodId);
+    cartObj.removeCartItem(e.target, prodId);
     resetProdCardBtn(prodId);
-    cartObj.updateCartItemTotal();
+    if (cartObj.cartItems.length) cartObj.updateCartItemTotal();
   }
 });
 
@@ -197,7 +201,7 @@ document.addEventListener("click", (e) => {
     loadJSON("/data.json").then((data) => {
       let newCartItem = new CartItem(data[button.parentElement.dataset.prodId]);
       cartObj.cartItems.push(newCartItem);
-      createCartItemHtml(newCartItem);
+      cartObj.createCartItemHtml(newCartItem);
       if (cartObj.cartItems.length === 0) {
         cartItemQty.innerText = "Your Cart (1)";
       } else {
@@ -209,8 +213,6 @@ document.addEventListener("click", (e) => {
   }
 });
 
-confOrdBtn.addEventListener("click", () => {
-  orderConfModal.showModal();
-});
+confOrdBtn.addEventListener("click", cartObj.confirmOrder);
 
-newOrdBtn.addEventListener("click", cartObj.resetCart);
+newOrdBtn.addEventListener("click", cartObj.startNewOrder);
