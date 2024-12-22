@@ -16,5 +16,7 @@ main {
 
   @media screen and (width < 1200px) {
     grid-template-columns: 1fr;
+    padding: 1rem;
+    margin-block: 0 1.5rem;
   }
 }

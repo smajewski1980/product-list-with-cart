@@ -59,7 +59,7 @@ button {
   border: none;
 }
 
-.card {
+.card .card-content {
   position: relative;
 }
 .card img {
@@ -84,7 +84,7 @@ button {
   position: absolute;
   left: 50%;
   transform: translate(-50%, -35%);
-  top: 250px;
+  top: -50%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -153,6 +153,8 @@ main {
 @media screen and (width < 1200px) {
   main {
     grid-template-columns: 1fr;
+    padding: 1rem;
+    margin-block: 0 1.5rem;
   }
 }
 

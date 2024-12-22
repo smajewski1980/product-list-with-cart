@@ -2,7 +2,9 @@
 @use "../abstracts/mixins" as *;
 
 .card {
-  position: relative;
+  .card-content {
+    position: relative;
+  }
 
   img {
     border-radius: 10px;
@@ -29,7 +31,7 @@
     position: absolute;
     left: 50%;
     transform: translate(-50%, -35%);
-    top: 250px;
+    top: -50%;
     display: flex;
     align-items: center;
     justify-content: center;

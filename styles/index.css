@@ -1,75 +1,87 @@
-main {
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
-  max-width: 1400px;
-  background-color: hsl(20, 50%, 98%);
-  margin-inline: auto;
-  margin-block: 2rem;
-  display: grid;
-  grid-template-columns: 70% 30%;
-  padding: 5rem;
-  gap: 2rem;
-}
-@media screen and (width < 1200px) {
-  main {
-    grid-template-columns: 1fr;
-  }
+button {
+  border-radius: 999px;
+  border: none;
 }
 
-.product-grid .cards-grid-wrapper {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
+.card .card-content {
+  position: relative;
 }
-
-.cart {
-  align-self: start;
-  background-color: white;
+.card img {
   border-radius: 10px;
+  margin-bottom: 2rem;
 }
-.cart .cart-empty {
-  padding: 1.5rem 1.5rem 2.5rem;
-  display: grid;
-  gap: 1rem;
-  display: block;
-}
-.cart .cart-empty img {
-  margin-inline: auto;
-}
-.cart .cart-empty p {
-  text-align: center;
+.card .card-category {
   font-size: 0.85rem;
-}
-.cart .cart-with-items {
-  padding: 1.5rem;
-  display: none;
-}
-.cart .cart-with-items .cart-items-wrapper .cart-item {
-  align-items: center;
-  display: flex;
-  justify-content: space-between;
-  padding-block: 0.5rem;
-  border-bottom: 1px solid rgba(173, 137, 133, 0.5);
-}
-.cart .cart-with-items .cart-items-wrapper .cart-item .cart-item-content .cart-item-name {
-  font-weight: 600;
-}
-.cart .cart-with-items .cart-items-wrapper .cart-item .cart-item-content .cart-item-price-info {
-  display: flex;
-  gap: 0.5rem;
-}
-.cart .cart-with-items .cart-items-wrapper .cart-item .cart-item-content .cart-item-price-info p {
   color: hsl(7, 20%, 60%);
 }
-.cart .cart-with-items .cart-items-wrapper .cart-item .cart-item-content .cart-item-price-info p:first-child {
-  margin-right: 0.5rem;
-  color: hsl(14, 86%, 42%);
-  font-weight: 700;
-}
-.cart .cart-with-items .cart-items-wrapper .cart-item .cart-item-content .cart-item-price-info p:last-child {
+.card .card-name,
+.card .card-price {
   font-weight: 600;
 }
-.cart .cart-with-items .cart-items-wrapper .cart-item .cart-item-remove {
-  outline: 1px solid hsl(7, 20%, 60%);
+.card .card-price {
+  color: hsl(14, 86%, 42%);
+}
+.card button {
+  background-color: white;
+  color: black;
+  font-weight: 600;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -35%);
+  top: -50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 2.5rem;
+  text-wrap: nowrap;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+.card button:not(.added-to-cart) {
+  outline: 2px solid hsl(7, 20%, 60%);
+}
+.card button:not(.added-to-cart):hover, .card button:not(.added-to-cart):focus-visible {
+  color: hsl(14, 86%, 42%);
+  outline: 2px solid hsl(14, 86%, 42%);
+}
+.card button .cart-icon {
+  margin: 0;
+}
+.card button .decrement-item,
+.card button .increment-item {
+  display: none;
+}
+.card .added-to-cart {
+  width: 176px;
+  background-color: hsl(14, 86%, 42%);
+  color: hsl(20, 50%, 98%);
+}
+.card .added-to-cart .cart-icon {
+  display: none;
+}
+.card .added-to-cart .decrement-item,
+.card .added-to-cart .increment-item {
+  display: block;
+  position: absolute;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  color: hsl(20, 50%, 98%);
+  outline: 2px solid hsl(20, 50%, 98%);
+  left: 1rem;
+  cursor: pointer;
+}
+.card .added-to-cart .decrement-item:hover, .card .added-to-cart .decrement-item:focus-visible,
+.card .added-to-cart .increment-item:hover,
+.card .added-to-cart .increment-item:focus-visible {
+  color: hsl(14, 86%, 42%);
+  background-color: hsl(20, 50%, 98%);
+  outline: 2px solid hsl(14, 86%, 42%);
+}
+.card .added-to-cart .increment-item {
+  left: unset;
+  right: 1rem;
+}/*# sourceMappingURL=index.css.map */x solid hsl(7, 20%, 60%);
   padding: 0.2rem;
   border-radius: 50%;
   cursor: pointer;

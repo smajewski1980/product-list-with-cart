@@ -149,7 +149,7 @@ function updateProdCardBtns(item, num) {
 
 function resetProdCardBtn(prodId) {
   const prodCards = document.querySelectorAll(".card");
-  const btn = prodCards[prodId].children[2];
+  const btn = prodCards[prodId].children[1].children[3];
   btn.classList.add("add-to-cart-btn");
   btn.classList.remove("added-to-cart");
   btn.innerHTML = `        
@@ -164,7 +164,8 @@ function resetProdCardBtn(prodId) {
 document.addEventListener("click", (e) => {
   if (e.target.matches(".decrement-item")) {
     const button = e.target;
-    const id = e.target.parentElement.parentElement.dataset.prodId;
+    const id =
+      e.target.parentElement.parentElement.parentElement.dataset.prodId;
 
     cartObj.cartItems.forEach((item) => {
       if (item.itemID.toString() !== id) {
@@ -193,7 +194,8 @@ document.addEventListener("click", (e) => {
 document.addEventListener("click", (e) => {
   if (e.target.matches(".increment-item")) {
     const button = e.target.parentElement;
-    const id = e.target.parentElement.parentElement.dataset.prodId;
+    const id =
+      e.target.parentElement.parentElement.parentElement.dataset.prodId;
 
     cartObj.cartItems.forEach((item) => {
       if (item.itemID.toString() !== id) {
@@ -230,7 +232,9 @@ document.addEventListener("click", (e) => {
     cartWithItems.style.display = "block";
 
     loadJSON("/data.json").then((data) => {
-      let newCartItem = new CartItem(data[button.parentElement.dataset.prodId]);
+      let newCartItem = new CartItem(
+        data[button.parentElement.parentElement.dataset.prodId]
+      );
       cartObj.cartItems.push(newCartItem);
       cartObj.createCartItemHtml(newCartItem);
       if (cartObj.cartItems.length === 0) {
