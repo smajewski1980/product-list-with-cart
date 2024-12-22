@@ -317,16 +317,16 @@ dialog .order-conf .order-summary .order-summary-item img {
 dialog .order-conf .order-summary .order-summary-item .order-summary-item-subtotal {
   font-weight: 600;
 }
-dialog .order-conf .order-summary .total-wrapper {
+dialog .order-conf .order-summary .order-conf-total-wrapper {
   align-items: center;
   display: flex;
   justify-content: space-between;
   margin-top: 1rem;
 }
-dialog .order-conf .order-summary .total-wrapper p:first-child {
+dialog .order-conf .order-summary .order-conf-total-wrapper p:first-child {
   color: hsl(14, 65%, 9%);
 }
-dialog .order-conf .order-summary .total-wrapper p:last-child {
+dialog .order-conf .order-summary .order-conf-total-wrapper p:last-child {
   font-size: 1.25rem;
   font-weight: 700;
 }

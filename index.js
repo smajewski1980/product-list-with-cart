@@ -9,6 +9,12 @@ const cartTotalElem = document.querySelector(".cart-total");
 const removeCartItemBtn = document.querySelector(".cart-item-remove");
 const confOrdBtn = document.querySelector(".btn-conf-ord");
 const newOrdBtn = document.querySelector(".btn-new-ord");
+const orderSummaryItemsWrapper = document.querySelector(
+  ".order-summary-items-wrapper"
+);
+const orderConfTotalElem = document.querySelector(
+  ".order-conf-total-wrapper p:last-child"
+);
 
 const cartObj = {
   isEmpty: true,
@@ -24,6 +30,7 @@ const cartObj = {
         return acc + curr;
       });
       cartTotalElem.innerText = `$${cartTotal.toFixed(2)}`;
+      orderConfTotalElem.innerText = `$${cartTotal.toFixed(2)}`;
     } else {
       cartWithItems.style.display = "none";
       cartEmpty.style.display = "block";
@@ -100,6 +107,7 @@ class CartItem {
     this.price = cartItem.price.toFixed(2);
     this.qty = 1;
     this.itemID = cartItem.id;
+    this.image = cartItem.image.thumbnail;
   }
   calculateSubtotal() {
     return this.price * this.qty;
@@ -107,7 +115,30 @@ class CartItem {
   removeItem() {}
 }
 
-function updateConfModal() {}
+function createOrderSummaryItemHTML(cartItem) {
+  orderSummaryItemsWrapper.innerHTML += `
+    <div class="order-summary-item">
+      <img src="${cartItem.image}" alt="" />
+      <div class="order-summary-content">
+        <p>${cartItem.name}</p>
+        <div class="order-summary-content-price-wrapper">
+          <p class="order-summary-item-qty">${cartItem.qty}x</p>
+          <p class="order-summary-item-price">@ $${cartItem.price}</p>
+        </div>
+      </div>
+      <p class="order-summary-item-subtotal">$${cartItem
+        .calculateSubtotal()
+        .toFixed(2)}</p>
+    </div>
+  `;
+}
+
+function updateConfModal() {
+  orderSummaryItemsWrapper.innerHTML = "";
+  cartObj.cartItems.forEach((cartItem) => {
+    createOrderSummaryItemHTML(cartItem);
+  });
+}
 
 function updateProdCardBtns(item, num) {
   return `
@@ -173,7 +204,7 @@ document.addEventListener("click", (e) => {
         cartObj.updateCartUI();
       }
 
-      console.log(cartObj.cartItems);
+      // console.log(cartObj.cartItems);
     });
   }
 });
@@ -209,7 +240,7 @@ document.addEventListener("click", (e) => {
         cartObj.calculateTotal();
       }
     });
-    console.log(cartObj.cartItems);
+    // console.log(cartObj.cartItems);
   }
 });
 
