@@ -15,6 +15,9 @@ const orderSummaryItemsWrapper = document.querySelector(
 const orderConfTotalElem = document.querySelector(
   ".order-conf-total-wrapper p:last-child"
 );
+const cartSubtotalElem = document.querySelector(".subtotal");
+const cartTaxElem = document.querySelector(".tax");
+const taxRate = 0.08;
 
 const cartObj = {
   isEmpty: true,
@@ -26,9 +29,13 @@ const cartObj = {
       item.calculateSubtotal()
     );
     if (subtotalsArray.length) {
-      const cartTotal = subtotalsArray.reduce((acc, curr) => {
+      const cartSubtotal = subtotalsArray.reduce((acc, curr) => {
         return acc + curr;
       });
+      const tax = cartSubtotal * taxRate;
+      const cartTotal = cartSubtotal + tax;
+      cartSubtotalElem.innerText = `Subtotal $${cartSubtotal.toFixed(2)}`;
+      cartTaxElem.innerText = `Tax $${tax.toFixed(2)}`;
       cartTotalElem.innerText = `$${cartTotal.toFixed(2)}`;
       orderConfTotalElem.innerText = `$${cartTotal.toFixed(2)}`;
     } else {
@@ -99,6 +106,10 @@ const cartObj = {
       </div>
     `;
   },
+
+  // calculateSalesTax(taxRate) {
+  //   return this.calculateTotal() * taxRate;
+  // },
 };
 
 class CartItem {
@@ -252,6 +263,4 @@ newOrdBtn.addEventListener("click", cartObj.startNewOrder);
 
 // let's try to add sales tax
 
-// create method on cart object to calculate tax
-// have to create an element in cart html and style it
-// have to create an element in order conf modal and style it
+// need to finish styling the cart subtotal and sales tax
