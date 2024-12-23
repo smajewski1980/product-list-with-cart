@@ -121,7 +121,6 @@ main {
 dialog {
   border-radius: 10px;
   position: absolute;
-  inset: 0;
   margin-inline: auto;
   top: 5rem;
   border: none;
@@ -132,9 +131,9 @@ dialog::backdrop {
   background-color: rgba(0, 0, 0, 0.5);
 }
 dialog .order-conf {
+  display: block;
   min-width: 600px;
   padding: 1rem;
-  scroll-padding: 5rem;
 }
 dialog .order-conf > p:nth-of-type(1) {
   font-size: 2.5rem;

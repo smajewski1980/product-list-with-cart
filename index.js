@@ -249,3 +249,9 @@ document.addEventListener("click", (e) => {
 confOrdBtn.addEventListener("click", cartObj.confirmOrder);
 
 newOrdBtn.addEventListener("click", cartObj.startNewOrder);
+
+// let's try to add sales tax
+
+// create method on cart object to calculate tax
+// have to create an element in cart html and style it
+// have to create an element in order conf modal and style it
