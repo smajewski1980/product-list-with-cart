@@ -6,6 +6,10 @@
     position: relative;
   }
 
+  &:has(.added-to-cart) img {
+    outline: 3px solid $clr-red;
+  }
+
   img {
     border-radius: 10px;
     margin-bottom: 2rem;

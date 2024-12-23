@@ -62,6 +62,9 @@ button {
 .card .card-content {
   position: relative;
 }
+.card:has(.added-to-cart) img {
+  outline: 3px solid hsl(14, 86%, 42%);
+}
 .card img {
   border-radius: 10px;
   margin-bottom: 2rem;
