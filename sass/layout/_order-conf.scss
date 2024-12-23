@@ -3,9 +3,10 @@
 
 dialog {
   border-radius: 10px;
-  position: fixed;
+  position: absolute;
   inset: 0;
-  margin: auto;
+  margin-inline: auto;
+  top: 5rem;
   border: none;
 
   &::backdrop {
@@ -45,6 +46,12 @@ dialog {
 
           > p {
             font-weight: 600;
+          }
+
+          p:first-child {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
           }
 
           .order-summary-content-price-wrapper {
@@ -96,7 +103,14 @@ dialog {
       padding-block: 0.75rem;
       @include buttons($clr-red, $clr-rose-50);
     }
+    scroll-padding: 5rem;
   }
-}
+  @media screen and (width < 600px) {
+    .order-conf {
+      min-width: 100%;
+    }
 
-// still need to style on small screens
+    min-width: 100%;
+  }
+  min-height: fit-content;
+}

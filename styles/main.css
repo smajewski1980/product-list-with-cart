@@ -271,10 +271,13 @@ main {
 
 dialog {
   border-radius: 10px;
-  position: fixed;
+  position: absolute;
   inset: 0;
-  margin: auto;
+  margin-inline: auto;
+  top: 5rem;
   border: none;
+  min-height: -moz-fit-content;
+  min-height: fit-content;
 }
 dialog::backdrop {
   background-color: rgba(0, 0, 0, 0.5);
@@ -282,6 +285,7 @@ dialog::backdrop {
 dialog .order-conf {
   min-width: 600px;
   padding: 1rem;
+  scroll-padding: 5rem;
 }
 dialog .order-conf > p:nth-of-type(1) {
   font-size: 2.5rem;
@@ -310,6 +314,11 @@ dialog .order-conf .order-summary .order-summary-item .order-summary-content {
 }
 dialog .order-conf .order-summary .order-summary-item .order-summary-content > p {
   font-weight: 600;
+}
+dialog .order-conf .order-summary .order-summary-item .order-summary-content p:first-child {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 dialog .order-conf .order-summary .order-summary-item .order-summary-content .order-summary-content-price-wrapper {
   display: flex;
@@ -350,4 +359,12 @@ dialog .order-conf button {
   padding-block: 0.75rem;
   background-color: hsl(14, 86%, 42%);
   color: hsl(20, 50%, 98%);
+}
+@media screen and (width < 600px) {
+  dialog {
+    min-width: 100%;
+  }
+  dialog .order-conf {
+    min-width: 100%;
+  }
 }/*# sourceMappingURL=main.css.map */
