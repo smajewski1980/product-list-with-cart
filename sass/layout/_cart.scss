@@ -77,6 +77,24 @@
           }
         }
       }
+      .cart-subtotal-wrapper {
+        border-bottom: 1px solid rgba($clr-rose-400, 0.5);
+        padding-block: 0.25rem;
+
+        .subtotal {
+          font-size: 1.25rem;
+        }
+
+        .cart-subtotal-line-wrapper {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+
+          &:nth-child(2) p:first-child {
+            font-size: 0.85rem;
+          }
+        }
+      }
     }
 
     .total-wrapper {

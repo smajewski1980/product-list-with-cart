@@ -6,7 +6,7 @@ dialog {
   position: absolute;
   // inset: 0;
   margin-inline: auto;
-  top: 5rem;
+  top: 25%;
   border: none;
 
   &::backdrop {
@@ -110,6 +110,7 @@ dialog {
       min-width: 100%;
     }
     min-width: 100%;
+    top: 5rem;
   }
   min-height: fit-content;
 }

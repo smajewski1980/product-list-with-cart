@@ -34,8 +34,8 @@ const cartObj = {
       });
       const tax = cartSubtotal * taxRate;
       const cartTotal = cartSubtotal + tax;
-      cartSubtotalElem.innerText = `Subtotal $${cartSubtotal.toFixed(2)}`;
-      cartTaxElem.innerText = `Tax $${tax.toFixed(2)}`;
+      cartSubtotalElem.innerText = `$${cartSubtotal.toFixed(2)}`;
+      cartTaxElem.innerText = `$${tax.toFixed(2)}`;
       cartTotalElem.innerText = `$${cartTotal.toFixed(2)}`;
       orderConfTotalElem.innerText = `$${cartTotal.toFixed(2)}`;
     } else {
