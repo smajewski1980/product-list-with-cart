@@ -86,7 +86,7 @@ const cartObj = {
         <div class="cart-item-content">
           <p class="cart-item-name">${item.name}</p>
           <div class="cart-item-price-info">
-            <p class="cart-item-qty">${item.qty}</p>
+            <p class="cart-item-qty">${item.qty}x</p>
             <p class="cart-item-price">@ $${item.price}</p>
             <p class="cart-item-subtotal">$${item
               .calculateSubtotal()
@@ -158,8 +158,6 @@ function resetProdCardBtn(prodId) {
             Add To Cart
           <p class="increment-item">+</p>`;
 }
-
-// need to make confirm order button update modal
 
 document.addEventListener("click", (e) => {
   if (e.target.matches(".decrement-item")) {
