@@ -108,7 +108,7 @@ const cartObj = {
           </div>
         </div>
         <div class="cart-item-remove">
-          <img src="/assets/images/icon-remove-item.svg" alt="remove item" />
+          <img src="assets/images/icon-remove-item.svg" alt="remove item" />
         </div>
       </div>
     `;

@@ -14,7 +14,7 @@ function generateCard({ image, category, name, price, id }) {
           <p class="card-name">${name}</p>
           <p class="card-price">$${price.toFixed(2).toString()}</p>
           <button class="add-to-cart-btn">
-          <img class="cart-icon" src="/assets/images/icon-add-to-cart.svg" alt=""/>
+          <img class="cart-icon" src="assets/images/icon-add-to-cart.svg" alt=""/>
           <p class="decrement-item">-</p>
           Add To Cart
           <p class="increment-item">+</p>
