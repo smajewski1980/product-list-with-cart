@@ -95,6 +95,25 @@ dialog {
           font-weight: 700;
         }
       }
+
+      .order-summary-subtotal-wrapper {
+        border-bottom: 1px solid rgba($clr-rose-400, 0.3);
+        padding-block: 0.25rem;
+
+        .summary-subtotal {
+          font-size: 1.25rem;
+        }
+
+        .order-summary-line-wrapper {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+
+          &:nth-child(2) p:first-child {
+            font-size: 0.85rem;
+          }
+        }
+      }
     }
 
     button {

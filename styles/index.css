@@ -215,6 +215,21 @@ dialog .order-conf .order-summary .order-conf-total-wrapper p:last-child {
   font-size: 1.25rem;
   font-weight: 700;
 }
+dialog .order-conf .order-summary .order-summary-subtotal-wrapper {
+  border-bottom: 1px solid rgba(173, 137, 133, 0.3);
+  padding-block: 0.25rem;
+}
+dialog .order-conf .order-summary .order-summary-subtotal-wrapper .summary-subtotal {
+  font-size: 1.25rem;
+}
+dialog .order-conf .order-summary .order-summary-subtotal-wrapper .order-summary-line-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+dialog .order-conf .order-summary .order-summary-subtotal-wrapper .order-summary-line-wrapper:nth-child(2) p:first-child {
+  font-size: 0.85rem;
+}
 dialog .order-conf button {
   cursor: pointer;
   font-size: 1rem;
