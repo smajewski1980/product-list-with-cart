@@ -1,31 +1,27 @@
 @use "../abstracts/variables" as *;
-
 @font-face {
   font-family: "Red Hat Text";
-  src: url(../../assets/fonts/static/RedHatText-Regular.ttf);
   font-weight: 400;
+  src: url(../../assets/fonts/static/RedHatText-Regular.ttf);
 }
 @font-face {
   font-family: "Red Hat Text";
-  src: url(../../assets/fonts/static/RedHatText-SemiBold.ttf);
   font-weight: 600;
+  src: url(../../assets/fonts/static/RedHatText-SemiBold.ttf);
 }
 @font-face {
   font-family: "Red Hat Text";
-  src: url(../../assets/fonts/static/RedHatText-Bold.ttf);
   font-weight: 700;
+  src: url(../../assets/fonts/static/RedHatText-Bold.ttf);
 }
-
 body {
   font-family: "Red Hat Text";
 }
-
 h1 {
   font-size: 2.5rem;
   line-height: 1;
   margin-bottom: 2rem;
 }
-
 h2 {
   color: $clr-red;
 }

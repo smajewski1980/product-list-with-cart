@@ -1,17 +1,16 @@
 @use "../abstracts/variables" as *;
 @use "../abstracts/mixins" as *;
-
 dialog {
-  border-radius: 10px;
-  position: absolute;
-  margin-inline: auto;
-  top: 25%;
   border: none;
+  border-radius: 10px;
+  margin-inline: auto;
+  min-height: fit-content;
+  position: absolute;
+  top: 25%;
 
   &::backdrop {
     background-color: rgba(0, 0, 0, 0.5);
   }
-
   .order-conf {
     display: block;
     min-width: 600px;
@@ -22,64 +21,56 @@ dialog {
       font-weight: 700;
       margin-top: 1rem;
     }
-
     > p:nth-of-type(2) {
       color: $clr-rose-500;
     }
-
     .order-summary {
       background-color: $clr-rose-50;
-      padding: 0.25rem 1.25rem 1.25rem;
       margin-block: 2rem;
+      padding: 0.25rem 1.25rem 1.25rem;
 
       .order-summary-item {
         align-items: center;
-        display: flex;
         border-bottom: 1px solid rgba($clr-rose-400, 0.3);
+        display: flex;
         padding-block: 1rem;
 
         .order-summary-content {
           display: grid;
-          gap: 0.75rem;
           flex-grow: 1;
+          gap: 0.75rem;
           line-height: 1;
 
           > p {
             font-weight: 600;
           }
-
           p:first-child {
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
           }
-
           .order-summary-content-price-wrapper {
             display: flex;
 
             > p:first-child {
-              font-weight: 600;
               color: $clr-red;
+              font-weight: 600;
               margin-right: 1rem;
             }
-
             > p:last-child {
               opacity: 0.5;
             }
           }
         }
-
         img {
-          width: 50px;
           height: 50px;
           margin-right: 1rem;
+          width: 50px;
         }
-
         .order-summary-item-subtotal {
           font-weight: 600;
         }
       }
-
       .order-conf-total-wrapper {
         @include line-wrapper();
         margin-top: 1rem;
@@ -88,7 +79,6 @@ dialog {
           @include total-text();
         }
       }
-
       .order-summary-subtotal-wrapper {
         @include subtotal-wrapper();
 
@@ -101,19 +91,18 @@ dialog {
         }
       }
     }
-
     button {
-      font-size: 1rem;
-      @include order-btns();
       @include buttons($clr-red, $clr-rose-50);
+      @include order-btns();
+      font-size: 1rem;
     }
   }
   @media screen and (width < 600px) {
+    min-width: 100%;
+    top: 5rem;
+
     .order-conf {
       min-width: 100%;
     }
-    min-width: 100%;
-    top: 5rem;
   }
-  min-height: fit-content;
 }

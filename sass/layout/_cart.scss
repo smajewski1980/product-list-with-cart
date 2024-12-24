@@ -1,42 +1,39 @@
 @use "../abstracts/variables" as *;
 @use "../abstracts/mixins" as *;
-
 .cart {
   align-self: start;
   background-color: white;
   border-radius: 10px;
 
   .cart-empty {
-    padding: 1.5rem 1.5rem 2.5rem;
     display: grid;
-    gap: 1rem;
     display: block;
+    gap: 1rem;
+    padding: 1.5rem 1.5rem 2.5rem;
 
     img {
       margin-inline: auto;
     }
     p {
       color: $clr-rose-900;
-      text-align: center;
       font-size: 0.85rem;
+      text-align: center;
     }
   }
-
   .cart-with-items {
-    padding: 1.5rem;
     display: none;
+    padding: 1.5rem;
 
     .cart-items-wrapper {
       .cart-item {
         @include line-wrapper();
-        padding-block: 0.5rem;
         border-bottom: 1px solid rgba($clr-rose-400, 0.5);
+        padding-block: 0.5rem;
 
         .cart-item-content {
           .cart-item-name {
             font-weight: 600;
           }
-
           .cart-item-price-info {
             display: flex;
             gap: 0.5rem;
@@ -44,24 +41,21 @@
             p {
               color: $clr-rose-400;
             }
-
             p:first-child {
-              margin-right: 0.5rem;
               color: $clr-red;
               font-weight: 700;
+              margin-right: 0.5rem;
             }
-
             p:last-child {
               font-weight: 600;
             }
           }
         }
-
         .cart-item-remove {
-          outline: 1px solid $clr-rose-400;
-          padding: 0.2rem;
           border-radius: 50%;
           cursor: pointer;
+          outline: 1px solid $clr-rose-400;
+          padding: 0.2rem;
 
           &:hover,
           &:focus-visible {
@@ -81,7 +75,6 @@
         }
       }
     }
-
     .total-wrapper {
       @include line-wrapper();
       padding-block: 1rem;
@@ -90,26 +83,24 @@
         @include total-text();
       }
     }
-
     .disclaimer {
-      display: flex;
-      justify-content: center;
       align-items: center;
-      padding-block: 1rem;
-      border-radius: 10px;
       background-color: $clr-rose-50;
+      border-radius: 10px;
+      display: flex;
       font-size: 0.85rem;
       gap: 0.5rem;
+      justify-content: center;
       margin-bottom: 1.5rem;
+      padding-block: 1rem;
 
       span {
         font-weight: 600;
       }
     }
-
     button {
-      @include order-btns();
       @include buttons($clr-red, $clr-rose-50);
+      @include order-btns();
 
       &:hover,
       &:focus-visible {

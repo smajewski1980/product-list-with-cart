@@ -1,40 +1,33 @@
 @use "../abstracts/variables" as *;
 @use "../abstracts/mixins" as *;
-
 .card {
   .card-content {
     position: relative;
   }
-
   &:has(.added-to-cart) img {
     outline: 3px solid $clr-red;
   }
-
   img {
     border-radius: 10px;
     margin-bottom: 2rem;
 
     @media screen and (width < 550px) {
-      width: 100%;
       height: 200px;
       object-fit: cover;
+      width: 100%;
     }
   }
-
   .card-category {
-    font-size: 0.85rem;
     color: $clr-rose-400;
+    font-size: 0.85rem;
   }
-
   .card-name,
   .card-price {
     font-weight: 600;
   }
-
   .card-price {
     color: $clr-red;
   }
-
   button {
     @include buttons(white, black);
     @include prod-card-btn();
@@ -48,47 +41,42 @@
         outline: 2px solid $clr-red;
       }
     }
-
     .cart-icon {
-      margin: 0;
       height: 100%;
+      margin: 0;
     }
-
     .decrement-item,
     .increment-item {
       display: none;
     }
   }
-
   .added-to-cart {
-    width: 176px;
     background-color: $clr-red;
     color: $clr-rose-50;
+    width: 176px;
 
     .cart-icon {
       display: none;
     }
-
     .decrement-item,
     .increment-item {
-      display: block;
-      position: absolute;
-      width: 1.5rem;
-      height: 1.5rem;
       border-radius: 50%;
       color: $clr-rose-50;
-      outline: 2px solid $clr-rose-50;
-      left: 1rem;
       cursor: pointer;
+      display: block;
+      height: 1.5rem;
+      left: 1rem;
+      outline: 2px solid $clr-rose-50;
+      position: absolute;
+      width: 1.5rem;
 
       &:hover,
       &:focus-visible {
-        color: $clr-red;
         background-color: $clr-rose-50;
+        color: $clr-red;
         outline: 2px solid $clr-red;
       }
     }
-
     .increment-item {
       left: unset;
       right: 1rem;

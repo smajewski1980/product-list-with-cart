@@ -27,18 +27,18 @@ button {
 
 @font-face {
   font-family: "Red Hat Text";
-  src: url(../../assets/fonts/static/RedHatText-Regular.ttf);
   font-weight: 400;
+  src: url(../../assets/fonts/static/RedHatText-Regular.ttf);
 }
 @font-face {
   font-family: "Red Hat Text";
-  src: url(../../assets/fonts/static/RedHatText-SemiBold.ttf);
   font-weight: 600;
+  src: url(../../assets/fonts/static/RedHatText-SemiBold.ttf);
 }
 @font-face {
   font-family: "Red Hat Text";
-  src: url(../../assets/fonts/static/RedHatText-Bold.ttf);
   font-weight: 700;
+  src: url(../../assets/fonts/static/RedHatText-Bold.ttf);
 }
 body {
   font-family: "Red Hat Text";
@@ -55,8 +55,8 @@ h2 {
 }
 
 button {
-  border-radius: 999px;
   border: none;
+  border-radius: 999px;
 }
 
 .card .card-content {
@@ -71,15 +71,15 @@ button {
 }
 @media screen and (width < 550px) {
   .card img {
-    width: 100%;
     height: 200px;
     -o-object-fit: cover;
        object-fit: cover;
+    width: 100%;
   }
 }
 .card .card-category {
-  font-size: 0.85rem;
   color: hsl(7, 20%, 60%);
+  font-size: 0.85rem;
 }
 .card .card-name,
 .card .card-price {
@@ -92,18 +92,18 @@ button {
   background-color: white;
   color: black;
   cursor: pointer;
-  font-weight: 600;
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%, -35%);
-  top: -50%;
-  display: flex;
   align-items: center;
-  justify-content: center;
-  padding: 0.75rem 2.5rem;
-  text-wrap: nowrap;
+  display: flex;
+  font-weight: 600;
   gap: 0.5rem;
+  justify-content: center;
+  left: 50%;
   max-height: 48px;
+  padding: 0.75rem 2.5rem;
+  position: absolute;
+  text-wrap: nowrap;
+  top: -50%;
+  transform: translate(-50%, -35%);
 }
 .card button:not(.added-to-cart) {
   outline: 2px solid hsl(7, 20%, 60%);
@@ -113,38 +113,38 @@ button {
   outline: 2px solid hsl(14, 86%, 42%);
 }
 .card button .cart-icon {
-  margin: 0;
   height: 100%;
+  margin: 0;
 }
 .card button .decrement-item,
 .card button .increment-item {
   display: none;
 }
 .card .added-to-cart {
-  width: 176px;
   background-color: hsl(14, 86%, 42%);
   color: hsl(20, 50%, 98%);
+  width: 176px;
 }
 .card .added-to-cart .cart-icon {
   display: none;
 }
 .card .added-to-cart .decrement-item,
 .card .added-to-cart .increment-item {
-  display: block;
-  position: absolute;
-  width: 1.5rem;
-  height: 1.5rem;
   border-radius: 50%;
   color: hsl(20, 50%, 98%);
-  outline: 2px solid hsl(20, 50%, 98%);
-  left: 1rem;
   cursor: pointer;
+  display: block;
+  height: 1.5rem;
+  left: 1rem;
+  outline: 2px solid hsl(20, 50%, 98%);
+  position: absolute;
+  width: 1.5rem;
 }
 .card .added-to-cart .decrement-item:hover, .card .added-to-cart .decrement-item:focus-visible,
 .card .added-to-cart .increment-item:hover,
 .card .added-to-cart .increment-item:focus-visible {
-  color: hsl(14, 86%, 42%);
   background-color: hsl(20, 50%, 98%);
+  color: hsl(14, 86%, 42%);
   outline: 2px solid hsl(14, 86%, 42%);
 }
 .card .added-to-cart .increment-item {
@@ -153,28 +153,28 @@ button {
 }
 
 main {
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
-  max-width: 1400px;
   background-color: hsl(20, 50%, 98%);
-  margin-inline: auto;
-  margin-block: 2rem;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
   display: grid;
-  grid-template-columns: 70% 30%;
-  padding: 5rem;
   gap: 2rem;
+  grid-template-columns: 70% 30%;
+  margin-block: 2rem;
+  margin-inline: auto;
+  max-width: 1400px;
+  padding: 5rem;
 }
 @media screen and (width < 1200px) {
   main {
     grid-template-columns: 1fr;
-    padding: 1rem;
     margin-block: 0 1.5rem;
+    padding: 1rem;
   }
 }
 
 .product-grid .cards-grid-wrapper {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
 
 .cart {
@@ -183,29 +183,29 @@ main {
   border-radius: 10px;
 }
 .cart .cart-empty {
-  padding: 1.5rem 1.5rem 2.5rem;
   display: grid;
-  gap: 1rem;
   display: block;
+  gap: 1rem;
+  padding: 1.5rem 1.5rem 2.5rem;
 }
 .cart .cart-empty img {
   margin-inline: auto;
 }
 .cart .cart-empty p {
   color: hsl(14, 65%, 9%);
-  text-align: center;
   font-size: 0.85rem;
+  text-align: center;
 }
 .cart .cart-with-items {
-  padding: 1.5rem;
   display: none;
+  padding: 1.5rem;
 }
 .cart .cart-with-items .cart-items-wrapper .cart-item {
-  display: flex;
   align-items: center;
+  display: flex;
   justify-content: space-between;
-  padding-block: 0.5rem;
   border-bottom: 1px solid rgba(173, 137, 133, 0.5);
+  padding-block: 0.5rem;
 }
 .cart .cart-with-items .cart-items-wrapper .cart-item .cart-item-content .cart-item-name {
   font-weight: 600;
@@ -218,18 +218,18 @@ main {
   color: hsl(7, 20%, 60%);
 }
 .cart .cart-with-items .cart-items-wrapper .cart-item .cart-item-content .cart-item-price-info p:first-child {
-  margin-right: 0.5rem;
   color: hsl(14, 86%, 42%);
   font-weight: 700;
+  margin-right: 0.5rem;
 }
 .cart .cart-with-items .cart-items-wrapper .cart-item .cart-item-content .cart-item-price-info p:last-child {
   font-weight: 600;
 }
 .cart .cart-with-items .cart-items-wrapper .cart-item .cart-item-remove {
-  outline: 1px solid hsl(7, 20%, 60%);
-  padding: 0.2rem;
   border-radius: 50%;
   cursor: pointer;
+  outline: 1px solid hsl(7, 20%, 60%);
+  padding: 0.2rem;
 }
 .cart .cart-with-items .cart-items-wrapper .cart-item .cart-item-remove:hover, .cart .cart-with-items .cart-items-wrapper .cart-item .cart-item-remove:focus-visible {
   filter: brightness(0);
@@ -239,56 +239,56 @@ main {
   padding-block: 0.25rem;
 }
 .cart .cart-with-items .cart-items-wrapper .cart-subtotal-wrapper .cart-subtotal-line-wrapper {
-  display: flex;
   align-items: center;
+  display: flex;
   justify-content: space-between;
 }
 .cart .cart-with-items .cart-items-wrapper .cart-subtotal-wrapper .cart-subtotal-line-wrapper:nth-child(2) p {
   font-size: 0.85rem;
 }
 .cart .cart-with-items .total-wrapper {
-  display: flex;
   align-items: center;
+  display: flex;
   justify-content: space-between;
   padding-block: 1rem;
 }
 .cart .cart-with-items .total-wrapper p {
-  font-weight: 700;
   font-size: 1.25rem;
+  font-weight: 700;
 }
 .cart .cart-with-items .disclaimer {
-  display: flex;
-  justify-content: center;
   align-items: center;
-  padding-block: 1rem;
-  border-radius: 10px;
   background-color: hsl(20, 50%, 98%);
+  border-radius: 10px;
+  display: flex;
   font-size: 0.85rem;
   gap: 0.5rem;
+  justify-content: center;
   margin-bottom: 1.5rem;
+  padding-block: 1rem;
 }
 .cart .cart-with-items .disclaimer span {
   font-weight: 600;
 }
 .cart .cart-with-items button {
-  width: 100%;
-  padding-block: 0.75rem;
   background-color: hsl(14, 86%, 42%);
   color: hsl(20, 50%, 98%);
   cursor: pointer;
+  padding-block: 0.75rem;
+  width: 100%;
 }
 .cart .cart-with-items button:hover, .cart .cart-with-items button:focus-visible {
   filter: brightness(0.9);
 }
 
 dialog {
-  border-radius: 10px;
-  position: absolute;
-  margin-inline: auto;
-  top: 25%;
   border: none;
+  border-radius: 10px;
+  margin-inline: auto;
   min-height: -moz-fit-content;
   min-height: fit-content;
+  position: absolute;
+  top: 25%;
 }
 dialog::backdrop {
   background-color: rgba(0, 0, 0, 0.5);
@@ -308,19 +308,19 @@ dialog .order-conf > p:nth-of-type(2) {
 }
 dialog .order-conf .order-summary {
   background-color: hsl(20, 50%, 98%);
-  padding: 0.25rem 1.25rem 1.25rem;
   margin-block: 2rem;
+  padding: 0.25rem 1.25rem 1.25rem;
 }
 dialog .order-conf .order-summary .order-summary-item {
   align-items: center;
-  display: flex;
   border-bottom: 1px solid rgba(173, 137, 133, 0.3);
+  display: flex;
   padding-block: 1rem;
 }
 dialog .order-conf .order-summary .order-summary-item .order-summary-content {
   display: grid;
-  gap: 0.75rem;
   flex-grow: 1;
+  gap: 0.75rem;
   line-height: 1;
 }
 dialog .order-conf .order-summary .order-summary-item .order-summary-content > p {
@@ -335,50 +335,50 @@ dialog .order-conf .order-summary .order-summary-item .order-summary-content .or
   display: flex;
 }
 dialog .order-conf .order-summary .order-summary-item .order-summary-content .order-summary-content-price-wrapper > p:first-child {
-  font-weight: 600;
   color: hsl(14, 86%, 42%);
+  font-weight: 600;
   margin-right: 1rem;
 }
 dialog .order-conf .order-summary .order-summary-item .order-summary-content .order-summary-content-price-wrapper > p:last-child {
   opacity: 0.5;
 }
 dialog .order-conf .order-summary .order-summary-item img {
-  width: 50px;
   height: 50px;
   margin-right: 1rem;
+  width: 50px;
 }
 dialog .order-conf .order-summary .order-summary-item .order-summary-item-subtotal {
   font-weight: 600;
 }
 dialog .order-conf .order-summary .order-conf-total-wrapper {
-  display: flex;
   align-items: center;
+  display: flex;
   justify-content: space-between;
   margin-top: 1rem;
 }
 dialog .order-conf .order-summary .order-conf-total-wrapper p {
-  font-weight: 700;
   font-size: 1.25rem;
+  font-weight: 700;
 }
 dialog .order-conf .order-summary .order-summary-subtotal-wrapper {
   border-bottom: 1px solid rgba(173, 137, 133, 0.3);
   padding-block: 0.25rem;
 }
 dialog .order-conf .order-summary .order-summary-subtotal-wrapper .order-summary-line-wrapper {
-  display: flex;
   align-items: center;
+  display: flex;
   justify-content: space-between;
 }
 dialog .order-conf .order-summary .order-summary-subtotal-wrapper .order-summary-line-wrapper:nth-child(2) p {
   font-size: 0.85rem;
 }
 dialog .order-conf button {
-  font-size: 1rem;
-  width: 100%;
-  padding-block: 0.75rem;
   background-color: hsl(14, 86%, 42%);
   color: hsl(20, 50%, 98%);
   cursor: pointer;
+  padding-block: 0.75rem;
+  width: 100%;
+  font-size: 1rem;
 }
 @media screen and (width < 600px) {
   dialog {
