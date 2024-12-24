@@ -240,7 +240,7 @@ document.addEventListener("click", (e) => {
     cartEmpty.style.display = "none";
     cartWithItems.style.display = "block";
 
-    loadJSON("/data.json").then((data) => {
+    loadJSON("./data.json").then((data) => {
       let newCartItem = new CartItem(
         data[button.closest(".card").dataset.prodId]
       );
