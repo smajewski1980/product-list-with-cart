@@ -22,9 +22,7 @@ const summaryTaxElem = document.querySelector(".summary-tax");
 const taxRate = 0.08;
 
 const cartObj = {
-  isEmpty: true,
   cartItems: [],
-  cartTotal: 0,
 
   calculateTotal: () => {
     const subtotalsArray = cartObj.cartItems.map((item) =>
@@ -36,11 +34,13 @@ const cartObj = {
       });
       const tax = cartSubtotal * taxRate;
       const cartTotal = cartSubtotal + tax;
+
       cartSubtotalElem.innerText = `$${cartSubtotal.toFixed(2)}`;
       cartTaxElem.innerText = `$${tax.toFixed(2)}`;
       cartTotalElem.innerText = `$${cartTotal.toFixed(2)}`;
-      summarySubtotalElem.innerHTML = `$${cartSubtotal.toFixed(2)}`;
-      summaryTaxElem.innerHTML = `$${tax.toFixed(2)}`;
+
+      summarySubtotalElem.innerText = `$${cartSubtotal.toFixed(2)}`;
+      summaryTaxElem.innerText = `$${tax.toFixed(2)}`;
       orderConfTotalElem.innerText = `$${cartTotal.toFixed(2)}`;
     } else {
       cartWithItems.style.display = "none";
@@ -72,6 +72,7 @@ const cartObj = {
 
   updateCartUI() {
     cartItemsInnerWrapper.innerHTML = "";
+
     cartObj.cartItems.forEach((item) => {
       cartObj.createCartItemHtml(item);
       cartObj.updateCartItemTotal();
@@ -81,11 +82,13 @@ const cartObj = {
 
   removeCartItem(item, prodId) {
     item.parentElement.parentElement.remove();
+
     this.cartItems.forEach((item, idx) => {
       if (item.itemID.toString() === prodId) {
         this.cartItems.splice(idx, 1);
       }
     });
+
     this.calculateTotal();
   },
 
@@ -110,10 +113,6 @@ const cartObj = {
       </div>
     `;
   },
-
-  // calculateSalesTax(taxRate) {
-  //   return this.calculateTotal() * taxRate;
-  // },
 };
 
 class CartItem {
@@ -127,7 +126,6 @@ class CartItem {
   calculateSubtotal() {
     return this.price * this.qty;
   }
-  removeItem() {}
 }
 
 function createOrderSummaryItemHTML(cartItem) {
@@ -150,6 +148,7 @@ function createOrderSummaryItemHTML(cartItem) {
 
 function updateConfModal() {
   orderSummaryItemsWrapper.innerHTML = "";
+
   cartObj.cartItems.forEach((cartItem) => {
     createOrderSummaryItemHTML(cartItem);
   });
@@ -165,6 +164,7 @@ function updateProdCardBtns(item, num) {
 function resetProdCardBtn(prodId) {
   const prodCards = document.querySelectorAll(".card");
   const btn = prodCards[prodId].children[1].children[3];
+
   btn.classList.add("add-to-cart-btn");
   btn.classList.remove("added-to-cart");
   btn.innerHTML = `        
@@ -177,8 +177,7 @@ function resetProdCardBtn(prodId) {
 document.addEventListener("click", (e) => {
   if (e.target.matches(".decrement-item")) {
     const button = e.target;
-    const id =
-      e.target.parentElement.parentElement.parentElement.dataset.prodId;
+    const id = e.target.closest(".card").dataset.prodId;
 
     cartObj.cartItems.forEach((item) => {
       if (item.itemID.toString() !== id) {
@@ -207,8 +206,7 @@ document.addEventListener("click", (e) => {
 document.addEventListener("click", (e) => {
   if (e.target.matches(".increment-item")) {
     const button = e.target.parentElement;
-    const id =
-      e.target.parentElement.parentElement.parentElement.dataset.prodId;
+    const id = e.target.closest(".card").dataset.prodId;
 
     cartObj.cartItems.forEach((item) => {
       if (item.itemID.toString() !== id) {
@@ -218,8 +216,6 @@ document.addEventListener("click", (e) => {
         button.innerHTML = updateProdCardBtns(item);
         cartObj.updateCartUI();
       }
-
-      // console.log(cartObj.cartItems);
     });
   }
 });
@@ -235,21 +231,23 @@ document.addEventListener("click", (e) => {
 
 document.addEventListener("click", (e) => {
   if (e.target.matches(".add-to-cart-btn")) {
-    e.preventDefault();
     let button = e.target;
-    cartObj.isEmpty = false;
+
     button.classList.add("added-to-cart");
     button.classList.remove("add-to-cart-btn");
     button.innerHTML = updateProdCardBtns(item, 1);
+
     cartEmpty.style.display = "none";
     cartWithItems.style.display = "block";
 
     loadJSON("/data.json").then((data) => {
       let newCartItem = new CartItem(
-        data[button.parentElement.parentElement.dataset.prodId]
+        data[button.closest(".card").dataset.prodId]
       );
+
       cartObj.cartItems.push(newCartItem);
       cartObj.createCartItemHtml(newCartItem);
+
       if (cartObj.cartItems.length === 0) {
         cartItemQty.innerText = "Your Cart (1)";
       } else {
@@ -257,7 +255,6 @@ document.addEventListener("click", (e) => {
         cartObj.calculateTotal();
       }
     });
-    // console.log(cartObj.cartItems);
   }
 });
 

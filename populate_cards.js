@@ -26,8 +26,10 @@ function generateCard({ image, category, name, price, id }) {
 
 loadJSON("/data.json").then((data) => {
   let cardHtml = "";
+
   for (item of data) {
     cardHtml += generateCard(item);
   }
+
   prodCardsWrapper.innerHTML = cardHtml;
 });
