@@ -19,7 +19,7 @@
   padding: 0.75rem 2.5rem;
   position: absolute;
   text-wrap: nowrap;
-  top: -50%;
+  top: calc(-50% - 0.5rem);
   transform: translate(-50%, -35%);
 }
 @mixin subtotal-wrapper() {
