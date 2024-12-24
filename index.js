@@ -17,6 +17,8 @@ const orderConfTotalElem = document.querySelector(
 );
 const cartSubtotalElem = document.querySelector(".subtotal");
 const cartTaxElem = document.querySelector(".tax");
+const summarySubtotalElem = document.querySelector(".summary-subtotal");
+const summaryTaxElem = document.querySelector(".summary-tax");
 const taxRate = 0.08;
 
 const cartObj = {
@@ -37,6 +39,8 @@ const cartObj = {
       cartSubtotalElem.innerText = `$${cartSubtotal.toFixed(2)}`;
       cartTaxElem.innerText = `$${tax.toFixed(2)}`;
       cartTotalElem.innerText = `$${cartTotal.toFixed(2)}`;
+      summarySubtotalElem.innerHTML = `$${cartSubtotal.toFixed(2)}`;
+      summaryTaxElem.innerHTML = `$${tax.toFixed(2)}`;
       orderConfTotalElem.innerText = `$${cartTotal.toFixed(2)}`;
     } else {
       cartWithItems.style.display = "none";
@@ -45,7 +49,6 @@ const cartObj = {
   },
 
   startNewOrder() {
-    // submit order func would go here...
     location.reload();
   },
 
@@ -58,6 +61,7 @@ const cartObj = {
   },
 
   confirmOrder() {
+    // submit order func would go here...
     updateConfModal();
     orderConfModal.showModal();
   },
