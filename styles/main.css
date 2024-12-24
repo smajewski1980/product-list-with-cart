@@ -91,6 +91,7 @@ button {
 .card button {
   background-color: white;
   color: black;
+  cursor: pointer;
   font-weight: 600;
   position: absolute;
   left: 50%;
@@ -102,7 +103,6 @@ button {
   padding: 0.75rem 2.5rem;
   text-wrap: nowrap;
   gap: 0.5rem;
-  cursor: pointer;
   max-height: 48px;
 }
 .card button:not(.added-to-cart) {
@@ -201,8 +201,8 @@ main {
   display: none;
 }
 .cart .cart-with-items .cart-items-wrapper .cart-item {
-  align-items: center;
   display: flex;
+  align-items: center;
   justify-content: space-between;
   padding-block: 0.5rem;
   border-bottom: 1px solid rgba(173, 137, 133, 0.5);
@@ -235,30 +235,24 @@ main {
   filter: brightness(0);
 }
 .cart .cart-with-items .cart-items-wrapper .cart-subtotal-wrapper {
-  border-bottom: 1px solid rgba(173, 137, 133, 0.5);
+  border-bottom: 1px solid rgba(173, 137, 133, 0.3);
   padding-block: 0.25rem;
-}
-.cart .cart-with-items .cart-items-wrapper .cart-subtotal-wrapper .subtotal {
-  font-size: 1.25rem;
 }
 .cart .cart-with-items .cart-items-wrapper .cart-subtotal-wrapper .cart-subtotal-line-wrapper {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.cart .cart-with-items .cart-items-wrapper .cart-subtotal-wrapper .cart-subtotal-line-wrapper:nth-child(2) p:first-child {
+.cart .cart-with-items .cart-items-wrapper .cart-subtotal-wrapper .cart-subtotal-line-wrapper:nth-child(2) p {
   font-size: 0.85rem;
 }
 .cart .cart-with-items .total-wrapper {
-  align-items: center;
   display: flex;
+  align-items: center;
   justify-content: space-between;
   padding-block: 1rem;
 }
-.cart .cart-with-items .total-wrapper p:first-child {
-  font-size: 0.85rem;
-}
-.cart .cart-with-items .total-wrapper p:last-child {
+.cart .cart-with-items .total-wrapper p {
   font-weight: 700;
   font-size: 1.25rem;
 }
@@ -277,11 +271,11 @@ main {
   font-weight: 600;
 }
 .cart .cart-with-items button {
-  cursor: pointer;
   width: 100%;
   padding-block: 0.75rem;
   background-color: hsl(14, 86%, 42%);
   color: hsl(20, 50%, 98%);
+  cursor: pointer;
 }
 .cart .cart-with-items button:hover, .cart .cart-with-items button:focus-visible {
   filter: brightness(0.9);
@@ -357,40 +351,34 @@ dialog .order-conf .order-summary .order-summary-item .order-summary-item-subtot
   font-weight: 600;
 }
 dialog .order-conf .order-summary .order-conf-total-wrapper {
-  align-items: center;
   display: flex;
+  align-items: center;
   justify-content: space-between;
   margin-top: 1rem;
 }
-dialog .order-conf .order-summary .order-conf-total-wrapper p:first-child {
-  color: hsl(14, 65%, 9%);
-}
-dialog .order-conf .order-summary .order-conf-total-wrapper p:last-child {
-  font-size: 1.25rem;
+dialog .order-conf .order-summary .order-conf-total-wrapper p {
   font-weight: 700;
+  font-size: 1.25rem;
 }
 dialog .order-conf .order-summary .order-summary-subtotal-wrapper {
   border-bottom: 1px solid rgba(173, 137, 133, 0.3);
   padding-block: 0.25rem;
 }
-dialog .order-conf .order-summary .order-summary-subtotal-wrapper .summary-subtotal {
-  font-size: 1.25rem;
-}
 dialog .order-conf .order-summary .order-summary-subtotal-wrapper .order-summary-line-wrapper {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
 }
-dialog .order-conf .order-summary .order-summary-subtotal-wrapper .order-summary-line-wrapper:nth-child(2) p:first-child {
+dialog .order-conf .order-summary .order-summary-subtotal-wrapper .order-summary-line-wrapper:nth-child(2) p {
   font-size: 0.85rem;
 }
 dialog .order-conf button {
-  cursor: pointer;
   font-size: 1rem;
   width: 100%;
   padding-block: 0.75rem;
   background-color: hsl(14, 86%, 42%);
   color: hsl(20, 50%, 98%);
+  cursor: pointer;
 }
 @media screen and (width < 600px) {
   dialog {

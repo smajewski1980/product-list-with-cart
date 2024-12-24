@@ -10,7 +10,6 @@
     padding: 1.5rem 1.5rem 2.5rem;
     display: grid;
     gap: 1rem;
-
     display: block;
 
     img {
@@ -24,19 +23,12 @@
   }
 
   .cart-with-items {
-    // display: none;
-    // outline: 2px solid lime;
     padding: 1.5rem;
     display: none;
 
     .cart-items-wrapper {
-      // margin-top: 0.5rem;
-
       .cart-item {
-        // outline: 2px solid blue;
-        align-items: center;
-        display: flex;
-        justify-content: space-between;
+        @include line-wrapper();
         padding-block: 0.5rem;
         border-bottom: 1px solid rgba($clr-rose-400, 0.5);
 
@@ -78,19 +70,12 @@
         }
       }
       .cart-subtotal-wrapper {
-        border-bottom: 1px solid rgba($clr-rose-400, 0.5);
-        padding-block: 0.25rem;
-
-        .subtotal {
-          font-size: 1.25rem;
-        }
+        @include subtotal-wrapper();
 
         .cart-subtotal-line-wrapper {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
+          @include line-wrapper();
 
-          &:nth-child(2) p:first-child {
+          &:nth-child(2) p {
             font-size: 0.85rem;
           }
         }
@@ -98,17 +83,11 @@
     }
 
     .total-wrapper {
-      align-items: center;
-      display: flex;
-      justify-content: space-between;
+      @include line-wrapper();
       padding-block: 1rem;
 
-      p:first-child {
-        font-size: 0.85rem;
-      }
-      p:last-child {
-        font-weight: 700;
-        font-size: 1.25rem;
+      p {
+        @include total-text();
       }
     }
 
@@ -129,9 +108,7 @@
     }
 
     button {
-      cursor: pointer;
-      width: 100%;
-      padding-block: 0.75rem;
+      @include order-btns();
       @include buttons($clr-red, $clr-rose-50);
 
       &:hover,

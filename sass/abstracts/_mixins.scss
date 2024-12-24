@@ -1,4 +1,43 @@
+@use "../abstracts/variables" as *;
+
 @mixin buttons($_bg-color, $_color) {
   background-color: $_bg-color;
   color: $_color;
+  cursor: pointer;
+}
+
+@mixin order-btns() {
+  width: 100%;
+  padding-block: 0.75rem;
+}
+
+@mixin prod-card-btn() {
+  font-weight: 600;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -35%);
+  top: -50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 2.5rem;
+  text-wrap: nowrap;
+  gap: 0.5rem;
+  max-height: 48px;
+}
+
+@mixin subtotal-wrapper() {
+  border-bottom: 1px solid rgba($clr-rose-400, 0.3);
+  padding-block: 0.25rem;
+}
+
+@mixin line-wrapper() {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin total-text() {
+  font-weight: 700;
+  font-size: 1.25rem;
 }

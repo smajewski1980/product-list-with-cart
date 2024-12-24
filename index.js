@@ -264,7 +264,3 @@ document.addEventListener("click", (e) => {
 confOrdBtn.addEventListener("click", cartObj.confirmOrder);
 
 newOrdBtn.addEventListener("click", cartObj.startNewOrder);
-
-// let's try to add sales tax
-
-// need to finish styling the cart subtotal and sales tax
